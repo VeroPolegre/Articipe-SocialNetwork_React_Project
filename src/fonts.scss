@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+/* set base values */
+$main-type: 'Inter', sans-serif;
+$text-base-size: 1em;
+$text-scale-ratio: 0.5;
+
+$text-xs: calc($text-base-size * ($text-scale-ratio*2.1));
+$text-sm: calc($text-base-size * ($text-scale-ratio*2.5));
+$text-md: calc($text-base-size * ($text-scale-ratio*3));
+$text-lg: calc($text-base-size * ($text-scale-ratio*3.5));
+$text-xl: calc($text-base-size * ($text-scale-ratio*4));
+$text-xxl: calc($text-base-size * ($text-scale-ratio*5));
+$text-xxxl: calc($text-base-size * ($text-scale-ratio*6));
+
+%h1 {
+    font-size: $text-xxl;
+    font-weight: 600;
+}
+
+%h2 {
+    font-size: $text-xl;
+    font-weight: 600;
+}
+
+%h3 {
+    font-size: $text-lg;
+    font-weight: 600;
+}
+
+%h4 {
+    font-size: $text-md;
+    font-weight: 600;
+}
+
+%h5 {
+    font-size: $text-sm;
+    font-weight: 500;
+}
+
+%h6 {
+    font-size: $text-xs;
+    font-weight: 500;
+}
+
+%p {
+    font-size: $text-xs;
+    font-weight: 300;
+}
+
+// Editamos directamente los elementos txt
+
+* {
+    font-family: $main-type;
+}
+
+h1 {
+    font-family: $main-type;
+    @extend %h1;
+}
+
+h2 {
+    font-family: $main-type;
+    @extend %h2;
+}
+
+h3 {
+    font-family: $main-type;
+    @extend %h3;
+}
+
+h4 {
+    font-family: $main-type;
+    @extend %h4;
+}
+
+h5 {
+    font-family: $main-type;
+    @extend %h5;
+}
+
+h6 {
+    font-family: $main-type;
+    @extend %h6;
+}
+
+p {
+    font-family: $main-type;
+    @extend %p;
+}
+
+.italic {
+    font-style: italic;
+    font-variation-settings: 'ital' 1;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.semi-bold {
+    font-weight: 600;
+}
+
+.light {
+    font-weight: 200;
+}
