@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5em;
+    width: 100vw;
+
+    section {
+        padding: 1.5em;
+        display: flex;
+        gap: 1em;
+
+        span.material-symbols-outlined {
+            font-size: xx-large;
+        }
+    }
+}

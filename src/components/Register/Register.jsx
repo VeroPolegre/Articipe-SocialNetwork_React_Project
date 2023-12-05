@@ -9,7 +9,7 @@ const Register = () => {
     e.preventDefault();
     const formData = new FormData();
     if (e.target.avatar.files[0])
-      formData.set("avatar", e.target.avatar.files[0]);
+    formData.set("avatar", e.target.avatar.files[0]);
     formData.set("username", e.target.username.value);
     formData.set("email", e.target.email.value);
     formData.set("dob", e.target.dob.value);
@@ -20,7 +20,7 @@ const Register = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="form-register">
         <input type="text" name="username" placeholder="username" />
         <input type="email" name="email" placeholder="email" />
         <input type="date" name="dob" placeholder="date of birth" />
