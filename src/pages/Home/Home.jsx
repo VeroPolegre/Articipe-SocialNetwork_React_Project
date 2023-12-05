@@ -5,8 +5,9 @@ import Header from "../../components/Header/header";
 const Home = () => {
   return (
     <>
-      <h1>Home</h1>
       <Header/>
+      <h1>This is home</h1>
+
     </>
   )
 };
