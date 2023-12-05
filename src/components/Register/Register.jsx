@@ -22,17 +22,6 @@ const Register = () => {
   return (
     <>
       <form onSubmit={onSubmit} className="form-register">
-
-        <button>
-          <input
-            type="file"
-            name="avatar"
-            accept="image/png, image/jpeg, image/jpg"
-            className="prueba-boton-avatar-input"
-          />
-          Custom Upload
-        </button>
-
         <input type="text" name="username" placeholder="username" />
         <input type="email" name="email" placeholder="email" />
         <input type="date" name="dob" placeholder="date of birth" />
