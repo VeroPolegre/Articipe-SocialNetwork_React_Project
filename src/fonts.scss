@@ -13,80 +13,49 @@ $text-xl: calc($text-base-size * ($text-scale-ratio*4));
 $text-xxl: calc($text-base-size * ($text-scale-ratio*5));
 $text-xxxl: calc($text-base-size * ($text-scale-ratio*6));
 
-%h1 {
-    font-size: $text-xxl;
-    font-weight: 600;
-}
-
-%h2 {
-    font-size: $text-xl;
-    font-weight: 600;
-}
-
-%h3 {
-    font-size: $text-lg;
-    font-weight: 600;
-}
-
-%h4 {
-    font-size: $text-md;
-    font-weight: 600;
-}
-
-%h5 {
-    font-size: $text-sm;
-    font-weight: 500;
-}
-
-%h6 {
-    font-size: $text-xs;
-    font-weight: 500;
-}
-
-%p {
-    font-size: $text-xs;
-    font-weight: 300;
-}
-
-// Editamos directamente los elementos txt
-
 * {
     font-family: $main-type;
 }
 
 h1 {
     font-family: $main-type;
-    @extend %h1;
+    font-size: $text-xxl;
+    font-weight: 600;
 }
 
 h2 {
     font-family: $main-type;
-    @extend %h2;
+    font-size: $text-xl;
+    font-weight: 600;
 }
 
 h3 {
     font-family: $main-type;
-    @extend %h3;
+    font-size: $text-lg;
+    font-weight: 600;
 }
 
 h4 {
     font-family: $main-type;
-    @extend %h4;
+    font-size: $text-md;
+    font-weight: 600;
 }
 
 h5 {
-    font-family: $main-type;
-    @extend %h5;
+    font-size: $text-sm;
+    font-weight: 500;
 }
 
 h6 {
     font-family: $main-type;
-    @extend %h6;
+    font-size: $text-xs;
+    font-weight: 500;
 }
 
 p {
     font-family: $main-type;
-    @extend %p;
+    font-size: $text-xs;
+    font-weight: 300;
 }
 
 .italic {
