@@ -1,0 +1,16 @@
+.form-register {
+    background-color: yellow;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5em;
+    padding: 2em;
+
+    input {
+        padding: 1em;
+    }
+}
+
+
+input[type="file"].prueba-boton-avatar-input {
+    display: none;
+}

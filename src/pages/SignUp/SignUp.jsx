@@ -4,9 +4,10 @@ import Register from "../../components/Register/Register";
 
 const SignUp = () => {
   return (
-    <div>
+    <>
+      <h1>Join our community!</h1>
       <Register />
-    </div>
+    </>
   );
 };
 
