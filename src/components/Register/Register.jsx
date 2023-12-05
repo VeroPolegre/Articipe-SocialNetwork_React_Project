@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Register.scss";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
