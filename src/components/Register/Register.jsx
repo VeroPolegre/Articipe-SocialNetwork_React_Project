@@ -10,7 +10,7 @@ const Register = () => {
     e.preventDefault();
     const formData = new FormData();
     if (e.target.avatar.files[0])
-    formData.set("avatar", e.target.avatar.files[0]);
+      formData.set("avatar", e.target.avatar.files[0]);
     formData.set("username", e.target.username.value);
     formData.set("email", e.target.email.value);
     formData.set("dob", e.target.dob.value);
@@ -22,31 +22,44 @@ const Register = () => {
   return (
     <>
       <form onSubmit={onSubmit} className="form-register">
-
-        <button>
-          <input
-            type="file"
-            name="avatar"
-            accept="image/png, image/jpeg, image/jpg"
-            className="prueba-boton-avatar-input"
-          />
-          Custom Upload
-        </button>
-
-        <input type="text" name="username" placeholder="username" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="date" name="dob" placeholder="date of birth" />
+        <label htmlFor="selectImg" className="material-symbols-outlined custom-file-upload">add_a_photo</label>
         <input
           type="file"
           name="avatar"
           accept="image/png, image/jpeg, image/jpg"
+          id="selectImg"
         />
-        <input type="password" name="password" placeholder="password" />
-        <input
-          type="password"
-          name="password2"
-          placeholder="confirm password"
-        />
+        
+        <div className="custom-label-input">
+          <label htmlFor="usernameFormRegister" className="material-symbols-outlined">person</label>
+          <input type="text" name="username" placeholder="username" id="usernameFormRegister" />
+        </div>
+
+        <div className="custom-label-input">
+          <label htmlFor="emailFormRegister" className="material-symbols-outlined">email</label>
+          <input type="email" name="email" placeholder="email" id="emailFormRegister" />
+        </div>
+
+        <div className="custom-label-input">
+          <label htmlFor="dobFormRegister" className="material-symbols-outlined">calendar_month</label>
+          <input type="date" name="dob" placeholder="date of birth" id="dobFormRegister" />
+        </div>
+
+        <div className="custom-label-input">
+          <label htmlFor="passwordFormRegister" className="material-symbols-outlined">lock</label>
+          <input type="password" name="password" placeholder="password" id="passwordFormRegister" />
+        </div>
+
+        <div className="custom-label-input">
+          <label htmlFor="password2FormRegister" className="material-symbols-outlined">lock</label>
+          <input
+            type="password"
+            name="password2"
+            placeholder="confirm password"
+            id="password2FormRegister"
+          />
+        </div>
+
         <button type="submit">Register now</button>
       </form>
     </>
