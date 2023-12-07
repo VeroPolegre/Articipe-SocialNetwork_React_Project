@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { register } from "../../features/auth/authSlice";
+import { register, login, reset } from "../../features/auth/authSlice";
 import "./Register.scss";
 import { useNavigate } from "react-router-dom";
+import "./Register.scss";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,14 @@ const Register = () => {
     if (validateForm(formData)) {
       try {
         await dispatch(register(formData));
+        await dispatch(
+          login({
+            username: formData.get("username"),
+            password: formData.get("password"),
+          })
+        );
+        setValidationErrors({});
+        setBackendErrors([]);
         navigate("/");
       } catch (error) {
         if (error.response && error.response.status === 400) {
@@ -53,6 +62,8 @@ const Register = () => {
         } else {
           console.error("Registration failed:", error.message);
         }
+      } finally {
+        dispatch(reset());
       }
     }
   };
