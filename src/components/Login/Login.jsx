@@ -8,6 +8,9 @@ const Login = () => {
     password: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [loginError, setLoginError] = useState(null);
+
   const { username, password } = formData;
 
   const onChange = (e) => {
@@ -19,30 +22,63 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const validateForm = () => {
+    const errors = {};
+
+    if (!username.trim()) {
+      errors.username = "Username is required";
+    }
+
+    if (!password.trim()) {
+      errors.password = "Password is required";
+    }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(formData));
+
+    if (validateForm()) {
+      try {
+        await dispatch(login(formData));
+        // Clear loginError if login is successful
+        setLoginError(null);
+      } catch (error) {
+        // Display error message for incorrect username or password
+        setLoginError("Incorrect username or password");
+      }
+    }
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        name="username"
-        placeholder="username"
-        value={username}
-        onChange={onChange}
-      />
+      <div>
+        <input
+          type="text"
+          name="username"
+          placeholder="username"
+          value={username}
+          onChange={onChange}
+        />
+        {errors.username && <p>{errors.username}</p>}
+      </div>
 
-      <input
-        type="password"
-        name="password"
-        placeholder="password"
-        value={password}
-        onChange={onChange}
-      />
+      <div>
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          value={password}
+          onChange={onChange}
+        />
+        {errors.password && <p>{errors.password}</p>}
+      </div>
 
       <button type="submit">Login</button>
+      {loginError && <p>{loginError}</p>}
       <div>
         Don't have an account yet?
         <a href="../register">Create one now.</a>
