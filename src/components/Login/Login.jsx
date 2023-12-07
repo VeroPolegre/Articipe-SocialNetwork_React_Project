@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { login } from "../../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import React, {useState} from "react";
+import {login} from "../../features/auth/authSlice";
+import {useDispatch} from "react-redux";
 import "./Login.scss"
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData,
+    setFormData] = useState({username: "", password: ""});
 
-  const [errors, setErrors] = useState({});
-  const [loginError, setLoginError] = useState(null);
+  const [errors,
+    setErrors] = useState({});
+  const [loginError,
+    setLoginError] = useState(null);
 
-  const { username, password } = formData;
+  const {username, password} = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -36,10 +36,12 @@ const Login = () => {
 
     setErrors(errors);
 
-    return Object.keys(errors).length === 0;
+    return Object
+      .keys(errors)
+      .length === 0;
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
 
     if (validateForm()) {
@@ -62,9 +64,7 @@ const Login = () => {
           placeholder="username"
           value={username}
           onChange={onChange}
-          id="usernameFormLogin"
-        />
-        {errors.username && <p>{errors.username}</p>}
+          id="usernameFormLogin"/> {errors.username && <p>{errors.username}</p>}
       </div>
 
       <div className="custom-label-input">
@@ -75,9 +75,7 @@ const Login = () => {
           placeholder="password"
           value={password}
           onChange={onChange}
-          id="passwordFormLogin"
-        />
-        {errors.password && <p>{errors.password}</p>}
+          id="passwordFormLogin"/> {errors.password && <p>{errors.password}</p>}
       </div>
 
       <button type="submit">Login</button>
@@ -88,7 +86,7 @@ const Login = () => {
         Don't have an account yet?<br></br>
         <a href="../register">Create one now.</a>
       </p>
-      
+
     </form>
   );
 };
