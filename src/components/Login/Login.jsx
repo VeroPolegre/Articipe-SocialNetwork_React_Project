@@ -44,10 +44,8 @@ const Login = () => {
     if (validateForm()) {
       try {
         await dispatch(login(formData));
-        // Clear loginError if login is successful
         setLoginError(null);
       } catch (error) {
-        // Display error message for incorrect username or password
         setLoginError("Incorrect username or password");
       }
     }
