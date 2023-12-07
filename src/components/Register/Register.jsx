@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
+import "./Register.scss";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -46,40 +47,42 @@ const Register = () => {
   return (
     <>
       <form onSubmit={onSubmit} className="form-register">
-        <div>
-          <input type="text" name="username" placeholder="username" />
+
+        <label htmlFor="selectImg" className="material-symbols-outlined custom-file-upload">add_a_photo</label>
+        <input
+          type="file"
+          name="avatar"
+          accept="image/png, image/jpeg, image/jpg"
+          id="selectImg"
+        />
+
+        <div className="custom-label-input">
+          <label htmlFor="usernameFormRegister" className="material-symbols-outlined">person</label>
+          <input type="text" name="username" placeholder="username" id="usernameFormRegister" />
           {errors.username && <p>{errors.username}</p>}
         </div>
 
-        <div>
-          <input type="email" name="email" placeholder="email" />
+        <div className="custom-label-input">
+          <label htmlFor="emailFormRegister" className="material-symbols-outlined">email</label>
+          <input type="email" name="email" placeholder="email" id="emailFormRegister" />
           {errors.email && <p>{errors.email}</p>}
         </div>
 
-        <div>
-          <input type="date" name="dob" placeholder="date of birth" />
+        <div className="custom-label-input">
+          <label htmlFor="dobFormRegister" className="material-symbols-outlined">calendar_month</label>
+          <input type="date" name="dob" placeholder="date of birth" id="dobFormRegister" />
           {errors.dob && <p>{errors.dob}</p>}
         </div>
 
-        <div>
-          <input
-            type="file"
-            name="avatar"
-            accept="image/png, image/jpeg, image/jpg"
-          />
-        </div>
-
-        <div>
-          <input type="password" name="password" placeholder="password" />
+        <div className="custom-label-input">
+          <label htmlFor="passwordFormRegister" className="material-symbols-outlined">lock</label>
+          <input type="password" name="password" placeholder="password" id="passwordFormRegister" />
           {errors.password && <p>{errors.password}</p>}
         </div>
 
-        <div>
-          <input
-            type="password"
-            name="password2"
-            placeholder="confirm password"
-          />
+        <div className="custom-label-input">
+          <label htmlFor="password2FormRegister" className="material-symbols-outlined">lock</label>
+          <input type="password" name="password2" placeholder="confirm password" id="password2FormRegister"/>
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
 
