@@ -4,6 +4,9 @@ import {create} from "../../features/posts/postsSlice";
 import {useNavigate} from "react-router-dom";
 
 const CreatePost = () => {
+    const [formData,
+        setFormData] = useState({images: [], title: "", content: "", keywords: []});
+
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -36,6 +39,13 @@ const CreatePost = () => {
             .length === 0;
     };
 
+    const onChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -46,23 +56,30 @@ const CreatePost = () => {
         }
     };
     return (
-        <React.Fragment>
-            <form onSubmit={onSubmit} className="form-register">
-                <div>
-                    <input type="file" name="images" accept="image/png, image/jpeg, image/jpg"/>
-                </div>
-                <div>
-                    <input type="text" name="title" placeholder="title"/> {errors.title && <p>{errors.title}</p>}
-                </div>
-                <div>
-                    <input type="text" name="content" placeholder="description"/> {errors.content && <p>{errors.content}</p>}
-                </div>
-                <div>
-                    <input type="text" name="keywords" placeholder="keywords"/> {errors.keywords && <p>{errors.keywords}</p>}
-                </div>
-                <button type="submit">Create Post</button>
-            </form>
-        </React.Fragment>
+
+        <form onSubmit={onSubmit} className="form-post">
+            <div>
+                <input
+                    type="file"
+                    name="images"
+                    onChange={onChange}
+                    accept="image/png, image/jpeg, image/jpg"/>
+            </div>
+            <div>
+                <input type="text" name="title" onChange={onChange} placeholder="title"/> {errors.title && <p>{errors.title}</p>}
+            </div>
+            <div>
+                <input
+                    type="text"
+                    name="content"
+                    onChange={onChange}
+                    placeholder="description"/> {errors.content && <p>{errors.content}</p>}
+            </div>
+            <div>
+                <input type="text" name="keywords" onChange={onChange} placeholder="keywords"/> {errors.keywords && <p>{errors.keywords}</p>}
+            </div>
+            <button type="submit">Create Post</button>
+        </form>
     )
 }
 

@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { login } from "../../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import React, {useState} from "react";
+import {login} from "../../features/auth/authSlice";
+import {useDispatch} from "react-redux";
 import "./Login.scss";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData,
+    setFormData] = useState({username: "", password: ""});
 
-  const [errors, setErrors] = useState({});
-  const [loginError, setLoginError] = useState(null);
-  const { username, password } = formData;
+  const [errors,
+    setErrors] = useState({});
+  const [loginError,
+    setLoginError] = useState(null);
+  const {username, password} = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Login = () => {
   const onChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -37,10 +37,12 @@ const Login = () => {
 
     setErrors(errors);
 
-    return Object.keys(errors).length === 0;
+    return Object
+      .keys(errors)
+      .length === 0;
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     if (validateForm()) {
       try {
@@ -56,10 +58,7 @@ const Login = () => {
   return (
     <form onSubmit={onSubmit} className="form-register">
       <div className="custom-label-input">
-        <label
-          htmlFor="usernameFormLogin"
-          className="material-symbols-outlined"
-        >
+        <label htmlFor="usernameFormLogin" className="material-symbols-outlined">
           person
         </label>
         <input
@@ -68,16 +67,11 @@ const Login = () => {
           placeholder="username"
           value={username}
           onChange={onChange}
-          id="usernameFormLogin"
-        />
-        {errors.username && <p>{errors.username}</p>}
+          id="usernameFormLogin"/> {errors.username && <p>{errors.username}</p>}
       </div>
 
       <div className="custom-label-input">
-        <label
-          htmlFor="passwordFormLogin"
-          className="material-symbols-outlined"
-        >
+        <label htmlFor="passwordFormLogin" className="material-symbols-outlined">
           lock
         </label>
         <input
@@ -86,9 +80,7 @@ const Login = () => {
           placeholder="password"
           value={password}
           onChange={onChange}
-          id="passwordFormLogin"
-        />
-        {errors.password && <p>{errors.password}</p>}
+          id="passwordFormLogin"/> {errors.password && <p>{errors.password}</p>}
       </div>
 
       <button type="submit">Login</button>
