@@ -4,7 +4,24 @@ import postsService from "./postsService";
 const initialState = {
 	posts: [],
 	post: {},
+	isError: false,
+	isSuccess: false,
+	message: "",
 };
+
+export const create = createAsyncThunk(
+	"posts/create",
+	async (formData, thunkAPI) => {
+		try {
+			return await postsService.createPost(formData);
+		} catch (error) {
+			console.error(error);
+			const message = error.response.data.message;
+			console.log(message);
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
 
 export const getPosts = createAsyncThunk("posts/getPosts", async () => {
 	try {
@@ -39,17 +56,50 @@ export const getPostByTitle = createAsyncThunk(
 export const postsSlice = createSlice({
 	name: "posts",
 	initialState,
-	reducers: {},
+	reducers: {
+		reset: (state) => {
+			state.isError = false;
+			state.isSuccess = false;
+			state.message = "";
+		},
+	},
 	extraReducers: (builder) => {
 		builder
+			.addCase(create.fulfilled, (state, action) => {
+				state.post = action.payload;
+				state.isSuccess = true;
+				state.message = action.payload.message;
+			})
+			.addCase(create.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
+			})
 			.addCase(getPosts.fulfilled, (state, action) => {
 				state.posts = action.payload;
+				state.isSuccess = true;
+				state.message = action.payload.message;
+			})
+			.addCase(getPosts.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
 			})
 			.addCase(getPostById.fulfilled, (state, action) => {
 				state.post = action.payload;
+				state.isSuccess = true;
+				state.message = action.payload.message;
+			})
+			.addCase(getPostById.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
 			})
 			.addCase(getPostByTitle.fulfilled, (state, action) => {
-				state.posts = action.payload;
+				state.post = action.payload;
+				state.isSuccess = true;
+				state.message = action.payload.message;
+			})
+			.addCase(getPostByTitle.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
 			});
 	},
 });

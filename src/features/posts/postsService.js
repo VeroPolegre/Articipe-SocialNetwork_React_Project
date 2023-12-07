@@ -2,6 +2,11 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/posts";
 
+const createPost = async (formData) => {
+	const res = await axios.post(API_URL, formData);
+	return res.data;
+};
+
 const getPosts = async () => {
 	const res = await axios.get(API_URL);
 	return res.data;
@@ -18,6 +23,7 @@ const getPostByTitle = async (title) => {
 };
 
 const postsService = {
+	createPost,
 	getPosts,
 	getPostById,
 	getPostByTitle,
