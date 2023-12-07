@@ -1,21 +1,32 @@
-import React, { useState } from "react";
-import { login } from "../../features/auth/authSlice";
-import { useDispatch } from "react-redux";
-import "./Login.scss";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, reset } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Login.scss";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-
-  const [errors, setErrors] = useState({});
-  const [loginError, setLoginError] = useState(null);
   const { username, password } = formData;
+  const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [errors, setErrors] = useState({});
+  const [loginError, setLoginError] = useState(null);
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/");
+    }
+    if (isError) {
+      setLoginError("Incorrect username or password");
+    }
+    dispatch(reset());
+  }, [isSuccess, message, isError]);
 
   const onChange = (e) => {
     setFormData({
@@ -24,33 +35,25 @@ const Login = () => {
     });
   };
 
-  const validateForm = () => {
-    const errors = {};
-
-    if (!username.trim()) {
-      errors.username = "Username is required";
-    }
-
-    if (!password.trim()) {
-      errors.password = "Password is required";
-    }
-
-    setErrors(errors);
-
-    return Object.keys(errors).length === 0;
-  };
-
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      try {
-        await dispatch(login(formData));
-        navigate("/");
-        setLoginError(null);
-      } catch (error) {
-        setLoginError("Incorrect username or password");
-      }
+
+    const validationErrors = {};
+    if (!username) {
+      validationErrors.username = "Username is required";
     }
+    if (!password) {
+      validationErrors.password = "Password is required";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setLoginError(null);
+    dispatch(login(formData));
   };
 
   return (
