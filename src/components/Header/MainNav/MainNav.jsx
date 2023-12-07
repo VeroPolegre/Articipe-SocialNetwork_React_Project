@@ -12,13 +12,13 @@ const MainNav = () => {
           <Link to="/search">
             <li className="material-symbols-outlined">search</li>
           </Link>
-          <Link to="/add">
+          <Link to="/create">
             <li className="material-symbols-outlined">add_box</li>
           </Link>
           <Link to="/inbox">
             <li className="material-symbols-outlined">inbox</li>
           </Link>
-          <Link to="/home">
+          <Link to="/profile">
             <li className="material-symbols-outlined">account_circle</li>
           </Link>
         </ul>
