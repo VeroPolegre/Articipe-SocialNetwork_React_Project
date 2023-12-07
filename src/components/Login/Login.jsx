@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {login} from "../../features/auth/authSlice";
 import {useDispatch} from "react-redux";
-import "./Login.scss"
+import "./Login.scss";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [formData,
@@ -11,17 +12,17 @@ const Login = () => {
     setErrors] = useState({});
   const [loginError,
     setLoginError] = useState(null);
-
   const {username, password} = formData;
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
-    }));
-  };
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const validateForm = () => {
     const errors = {};
@@ -43,10 +44,10 @@ const Login = () => {
 
   const onSubmit = async(e) => {
     e.preventDefault();
-
     if (validateForm()) {
       try {
         await dispatch(login(formData));
+        navigate("/");
         setLoginError(null);
       } catch (error) {
         setLoginError("Incorrect username or password");
@@ -57,7 +58,9 @@ const Login = () => {
   return (
     <form onSubmit={onSubmit} className="form-register">
       <div className="custom-label-input">
-        <label htmlFor="usernameFormLogin" className="material-symbols-outlined">person</label>
+        <label htmlFor="usernameFormLogin" className="material-symbols-outlined">
+          person
+        </label>
         <input
           type="text"
           name="username"
@@ -68,7 +71,9 @@ const Login = () => {
       </div>
 
       <div className="custom-label-input">
-        <label htmlFor="passwordFormLogin" className="material-symbols-outlined">lock</label>
+        <label htmlFor="passwordFormLogin" className="material-symbols-outlined">
+          lock
+        </label>
         <input
           type="password"
           name="password"
@@ -86,7 +91,6 @@ const Login = () => {
         Don't have an account yet?<br></br>
         <a href="../register">Create one now.</a>
       </p>
-
     </form>
   );
 };
