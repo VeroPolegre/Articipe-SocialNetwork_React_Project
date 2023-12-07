@@ -47,15 +47,20 @@ export const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.isSuccess = true;
+        state.isError = false;
         state.message = action.payload.message;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
       })
       .addCase(register.rejected, (state, action) => {
         state.isError = true;
+        state.isSuccess = false;
         state.message = action.payload;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
+        state.isError = false;
       });
   },
 });
