@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import "./fonts.scss";
 import SignIn from "./pages/SignIn/SignIn";
 import Home from "./pages/Home/Home";
 import Register from "./components/Register/Register";
 import PrivateZone from "./guards/PrivateZone";
 import NotFound from "./components/NotFound/NotFound";
+import Profile from "./pages/Profile/Profile";
+import CreatePost from "./components/CreatePost/CreatePost";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/create" element={<CreatePost />}></Route>
         </Routes>
       </Router>
     </>

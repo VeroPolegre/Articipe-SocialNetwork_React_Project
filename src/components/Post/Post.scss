@@ -1,0 +1,43 @@
+.post {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 2em;
+    section.post-details {
+        padding: 0.6em;
+    }
+    section {
+        div.post-user-details {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            font-size: 0.85em;
+            gap: 1em;
+            padding: 1em;
+        }
+        div.post-like-menu {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            padding-bottom: 0.6em;
+            span {
+                font-size: xx-large;
+            }
+            div {
+                display: flex;
+                flex-flow: row nowrap;
+                gap: 0.6em;
+                span {
+                    font-size: xx-large;
+                }
+            }
+        }
+    }
+}
+
+div.profile-pic-post {
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 5px;
+}
