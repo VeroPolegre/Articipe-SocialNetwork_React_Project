@@ -1,9 +1,14 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/posts";
+const token = JSON.parse(localStorage.getItem("token"));
 
 const createPost = async (formData) => {
-	const res = await axios.post(API_URL, formData);
+	const res = await axios.post(API_URL, formData, {
+		headers: {
+			Authorization: token,
+		},
+	});
 	return res.data;
 };
 
