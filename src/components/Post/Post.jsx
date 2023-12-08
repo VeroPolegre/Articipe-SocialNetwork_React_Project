@@ -14,11 +14,11 @@ const Post = (params) => {
                     </div>
                     <div>
                         <p className="semi-bold">{params.username}</p>
-                        <p>Category</p>
+                        <p>{params.category}</p>
                     </div>
                 </div>
                 <div className="img-container">
-                    <img src={params.images} alt="" />
+                    <img src={`http://localhost:8080/uploads/${params.images}`} alt="" />
                 </div>
             </section>
             <section className="post-details">

@@ -15,9 +15,8 @@ export const create = createAsyncThunk(
 		try {
 			return await postsService.createPost(formData);
 		} catch (error) {
-			console.error(error);
 			const message = error.response.data.message;
-			console.log(message);
+			console.error(error);
 			return thunkAPI.rejectWithValue(message);
 		}
 	}
