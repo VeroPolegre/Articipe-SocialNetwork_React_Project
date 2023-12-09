@@ -16,12 +16,13 @@ const Posts = () => {
 	const post = posts.map((post) => {
 		return (
 			<Post
-				images={post.images[0]}
+				images={post.images}
 				category={post.category}
 				title={post.title}
 				content={post.content}
 				key={post._id}
 				username={post.userId.username}
+				avatar={post.userId.avatar}
 			/>
 		);
 	});
