@@ -5,13 +5,13 @@ const testImg = "https://images.pexels.com/photos/19315251/pexels-photo-19315251
 const PostGrid = (posts) => {
     return (
         <main className="main-grid">
-            {posts.images.map(image => {
+            {/* {posts.images.map(image => {
                 return (
                     <div className="img-container ">
                         <img src={image} alt="" />
                     </div>
                 )
-            })}
+            })} */}
         </main>
     )
 };
