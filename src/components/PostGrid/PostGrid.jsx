@@ -7,14 +7,13 @@ const PostGrid = (posts) => {
         <main className="main-grid">
 
             {/* Añadir la logica del back--------------------- */}
-            {/* {posts.images.map(image => {
+            {/* {/* {posts.images.map(image => {
                 return (
                     <div className="img-container ">
                         <img src={image} alt="" />
                     </div>
                 )
             })} */}
-
         </main>
     )
 };
