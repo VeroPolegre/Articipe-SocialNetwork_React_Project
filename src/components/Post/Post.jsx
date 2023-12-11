@@ -1,8 +1,11 @@
 import { Carousel } from "antd";
 import "./Post.scss";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { getComments } from "../../features/comments/commentsSlice";
 
 const Post = (params) => {
+  const dispatch = useDispatch();
   const onChange = (currentSlide) => {
     // console.log(currentSlide);
   };
@@ -44,7 +47,7 @@ const Post = (params) => {
           <div>
             <span className="semi-bold">{params.title} </span>
             <span>{params.content}</span>
-            <p>View all comments</p>
+            <p onClick={() => dispatch(getComments())}>View all comments</p>
           </div>
         </section>
       </article>
