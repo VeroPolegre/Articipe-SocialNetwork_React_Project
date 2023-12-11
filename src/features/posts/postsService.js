@@ -27,11 +27,22 @@ const getPostByTitle = async (title) => {
 	return res.data;
 };
 
+const getPostsByKeywords = async (keywords) => {
+	const res = await axios.get(`${API_URL}/explore?keywords=${keywords}`);
+	return res.data.map((post) => ({
+		images: post.images.map((image) => ({
+			postId: post._id,
+			url: `http://localhost:8080/uploads/${image}`,
+		})),
+	}));
+};
+
 const postsService = {
 	createPost,
 	getPosts,
 	getPostById,
 	getPostByTitle,
+	getPostsByKeywords,
 };
 
 export default postsService;

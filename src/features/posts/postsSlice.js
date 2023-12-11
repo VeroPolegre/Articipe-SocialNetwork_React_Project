@@ -52,6 +52,17 @@ export const getPostByTitle = createAsyncThunk(
 	}
 );
 
+export const getPostsByKeywords = createAsyncThunk(
+	"posts/getPostsByKeywords",
+	async (keywords) => {
+		try {
+			return await postsService.getPostsByKeywords(keywords);
+		} catch (error) {
+			console.error(error);
+		}
+	}
+);
+
 export const postsSlice = createSlice({
 	name: "posts",
 	initialState,
@@ -77,6 +88,9 @@ export const postsSlice = createSlice({
 				state.posts = action.payload;
 				state.isSuccess = true;
 				state.message = action.payload.message;
+				// const updatedPosts = state.posts ((post) => {
+				// 	if (posts.includes(post._id))
+				// })
 			})
 			.addCase(getPosts.rejected, (state, action) => {
 				state.isError = true;
@@ -97,6 +111,18 @@ export const postsSlice = createSlice({
 				state.message = action.payload.message;
 			})
 			.addCase(getPostByTitle.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
+			})
+			.addCase(getPostsByKeywords.fulfilled, (state, action) => {
+				const posts = action.payload.map((post) => ({
+					images: post.images,
+				}));
+				state.posts = posts.flat();
+				state.isSuccess = true;
+				state.message = action.payload.message;
+			})
+			.addCase(getPostsByKeywords.rejected, (state, action) => {
 				state.isError = true;
 				state.message = action.payload;
 			});
