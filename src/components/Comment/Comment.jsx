@@ -1,4 +1,3 @@
-// CommentComponent.js
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import commentsService from "../../features/comments/commentsService";
@@ -10,10 +9,6 @@ import {
 const CommentComponent = ({ comment }) => {
   const [isUpdatingLikes, setIsUpdatingLikes] = useState(false);
   const dispatch = useDispatch();
-
-  // if (!comment) {
-  //   return <div>No comments</div>;
-  // }
 
   const commentText = comment.text || "No text available";
 

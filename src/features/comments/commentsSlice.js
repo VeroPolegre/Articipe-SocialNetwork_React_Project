@@ -13,11 +13,7 @@ export const createComment = createAsyncThunk(
   "comments/createComment",
   async (commentData, thunkAPI) => {
     try {
-      return await commentsService.createComment(
-        commentData.postId,
-        commentData.text,
-        commentData.image
-      );
+      return await commentsService.createComment(commentData);
     } catch (error) {
       console.error(error);
       const message = error.response.data.message;
@@ -29,7 +25,7 @@ export const createComment = createAsyncThunk(
 
 export const getComments = createAsyncThunk(
   "comments/getComments",
-  async (_, thunkAPI) => {
+  async (undefined, thunkAPI) => {
     try {
       return await commentsService.getComments();
     } catch (error) {
@@ -72,18 +68,6 @@ export const unlikeComment = createAsyncThunk(
     } catch (error) {
       console.error(error);
       return thunkAPI.rejectWithValue("Error unliking comment");
-    }
-  }
-);
-
-export const updateCommentLikes = createAsyncThunk(
-  "comments/updateCommentLikes",
-  async ({ commentId, userId }, thunkAPI) => {
-    try {
-      return await commentsService.updateCommentLikes(commentId, userId);
-    } catch (error) {
-      console.error(error);
-      return thunkAPI.rejectWithValue("Error updating comment likes");
     }
   }
 );
