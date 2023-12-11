@@ -11,28 +11,27 @@ import CreatePost from "./components/CreatePost/CreatePost";
 import Explore from "./pages/Explore/Explore";
 
 function App() {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PrivateZone>
-                <Home />
-              </PrivateZone>
-            }
-          ></Route>
-          <Route path="/signin" element={<SignIn />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/create" element={<CreatePost />}></Route>
-          <Route path="/explore" element={<Explore />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-      </Router>
-    </>
-  );
+	return (
+		<>
+			<Router>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<PrivateZone>
+								<Home />
+							</PrivateZone>
+						}></Route>
+					<Route path="/signin" element={<SignIn />}></Route>
+					<Route path="/register" element={<Register />}></Route>
+					<Route path="/profile" element={<Profile />}></Route>
+					<Route path="/create" element={<CreatePost />}></Route>
+					<Route path="/explore" element={<Explore />}></Route>
+					<Route path="*" element={<NotFound />}></Route>
+				</Routes>
+			</Router>
+		</>
+	);
 }
 
 export default App;
