@@ -27,7 +27,11 @@ const UserDataProfile = () => {
                 <button className="button-2">contact</button>
                 <button className="material-symbols-outlined button-3">volunteer_activism</button>
             </article>
-            <article></article>
+            <article className="user-posts-nav">
+                <span className="material-symbols-outlined active">browse</span>
+                <span className="material-symbols-outlined inactive">palette</span>
+                <span className="material-symbols-outlined inactive">person_pin</span>
+            </article>
         </section>
     );
 };
