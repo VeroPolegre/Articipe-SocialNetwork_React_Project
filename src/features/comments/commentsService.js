@@ -11,8 +11,8 @@ const createComment = async (postId, text, image) => {
   return res.data;
 };
 
-const getComments = async () => {
-  const res = await axios.get(API_URL);
+const getComments = async (postId) => {
+  const res = await axios.get(`${API_URL}/${postId}`);
   return res.data;
 };
 

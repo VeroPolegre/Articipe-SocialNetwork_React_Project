@@ -11,9 +11,9 @@ const CommentComponent = ({ comment }) => {
   const [isUpdatingLikes, setIsUpdatingLikes] = useState(false);
   const dispatch = useDispatch();
 
-  if (!comment) {
-    return <div>No comments</div>;
-  }
+  // if (!comment) {
+  //   return <div>No comments</div>;
+  // }
 
   const commentText = comment.text || "No text available";
 
