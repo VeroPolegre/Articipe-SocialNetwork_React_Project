@@ -18,7 +18,7 @@ const PageNav = () => {
         return (
             <header>
                 <section>
-                    <h4>ARTCIPE</h4>
+                    <h4>ARTICIPE</h4>
                 </section>
                 <section>
                     <span className="material-symbols-outlined">favorite</span>
@@ -46,7 +46,7 @@ const PageNav = () => {
             <>
                 <header>
                     <section>
-                        <h4>ARTCIPE</h4>
+                        <h4>ARTICIPE</h4>
                     </section>
                     <section>
                         <span className="material-symbols-outlined">favorite</span>
