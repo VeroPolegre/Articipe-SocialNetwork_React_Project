@@ -9,7 +9,7 @@ const MainNav = () => {
           <Link to="/">
             <li className="material-symbols-outlined">home</li>
           </Link>
-          <Link to="/search">
+          <Link to="/explore">
             <li className="material-symbols-outlined">search</li>
           </Link>
           <Link to="/create">

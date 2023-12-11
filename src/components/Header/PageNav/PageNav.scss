@@ -1,17 +1,31 @@
 header {
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    height: 5em;
-    width: 100vw;
+    padding: 0.5em 0em;
 
     section {
-        padding: 1.5em;
+        padding: 1em 1.5em;
         display: flex;
         gap: 1em;
+    }
 
-        span.material-symbols-outlined {
-            font-size: xx-large;
+    span.material-symbols-outlined {
+        font-size: xx-large;
+    }
+
+    div {
+        width: 100vw;
+        display: flex;
+        gap: 0.5em;
+        padding: 0em 1em;
+        span {
+            width: 50%;
+            text-align: center;
+            padding: 0.35em 1em;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 5px;
         }
     }
 }
