@@ -11,20 +11,16 @@ const SearchBar = () => {
 		setKeywords(e.target.value);
 	};
 
-	const handleKeyDown = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (e.key === "Enter") {
-			const keywordsArray = keywords
-				.split(", ")
-				.map((keyword) => keyword.trim());
-			dispatch(getPostsByKeywords(keywordsArray));
-			setKeywords("");
-		}
+		const keywordsArray = keywords.split(", ").map((keyword) => keyword.trim());
+		dispatch(getPostsByKeywords(keywordsArray));
+		setKeywords("");
 	};
 
 	return (
 		<>
-			<form className="searchBarNav">
+			<form className="searchBarNav" onSubmit={handleSubmit}>
 				<div className="custom-label-input">
 					<label
 						htmlFor="searchInput"
@@ -36,7 +32,6 @@ const SearchBar = () => {
 						name="keywords"
 						value={keywords}
 						onChange={handleChange}
-						onKeyDown={handleKeyDown}
 						placeholder="Search"
 						id="searchInput"
 						className="text-input"
