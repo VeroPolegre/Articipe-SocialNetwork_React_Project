@@ -134,6 +134,16 @@ export const commentsSlice = createSlice({
       })
       .addCase(unlikeComment.fulfilled, (state, action) => {
         state.comment = action.payload;
+        const commentsUpdated = state.comments.comments.map((comment) => {
+          if (comment._id == action.payload._id) {
+            return action.payload;
+          }
+          return comment;
+        });
+        state.comments = {
+          postId: state.comments.postId,
+          comments: commentsUpdated,
+        };
         state.isSuccess = true;
         state.message = "Comment unliked successfully.";
       })
