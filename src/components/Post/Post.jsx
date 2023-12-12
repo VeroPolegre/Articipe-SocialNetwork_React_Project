@@ -1,15 +1,19 @@
 import { Carousel } from "antd";
 import "./Post.scss";
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getComments } from "../../features/comments/commentsSlice";
 import Comments from "../Comments/Comments";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { like } from "../../features/posts/postsSlice";
 
 const Post = (params) => {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
-  const onChange = (currentSlide) => {
-    // console.log(currentSlide);
+  const { user } = useSelector((state) => state.auth);
+  const isLiked = params.likes.includes(user._id);
+  const handleLikeClick = () => {
+    dispatch(like(params.postId));
   };
 
   const postImg = params.images.map((img) => {
@@ -43,12 +47,19 @@ const Post = (params) => {
               <p>{params.category}</p>
             </div>
           </div>
-          <Carousel afterChange={onChange}>{postImg}</Carousel>
+          <Carousel>{postImg}</Carousel>
         </section>
         <section className="post-details">
           <div className="post-like-menu">
             <div>
-              <span className="material-symbols-outlined">favorite</span>
+              <span
+                className={`material-symbols-outlined ${
+                  isLiked ? "material-symbols-filled" : ""
+                }`}
+                onClick={handleLikeClick}
+              >
+                {isLiked ? "favorite" : "favorite_border"}
+              </span>
               <span className="material-symbols-outlined">add_comment</span>
             </div>
             <span className="material-symbols-outlined">bookmark</span>
