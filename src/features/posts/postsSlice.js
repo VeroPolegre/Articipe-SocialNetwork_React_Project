@@ -85,12 +85,23 @@ export const postsSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(getPosts.fulfilled, (state, action) => {
-				state.posts = action.payload;
 				state.isSuccess = true;
 				state.message = action.payload.message;
-				// const updatedPosts = state.posts ((post) => {
-				// 	if (posts.includes(post._id))
-				// })
+				const updatedPosts = state.posts.map((post) => {
+					if (post._id == action.payload._id) {
+						post = action.payload;
+					}
+					return post;
+				});
+				state.posts = updatedPosts;
+				// const productsUpdated = state.products.map((product) => {
+				// 	if (product._id == action.payload._id) {
+				// 	  product = action.payload;
+				// 	}
+				// 	return product;
+				//   });
+				//   state.products = productsUpdated;
+				// });
 			})
 			.addCase(getPosts.rejected, (state, action) => {
 				state.isError = true;
