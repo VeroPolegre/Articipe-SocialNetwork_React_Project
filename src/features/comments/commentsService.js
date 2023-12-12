@@ -13,7 +13,6 @@ const createComment = async (formData) => {
 };
 
 const getComments = async (postId) => {
-  console.log("postId:", postId);
   const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.get(API_URL + postId, {
     headers: {

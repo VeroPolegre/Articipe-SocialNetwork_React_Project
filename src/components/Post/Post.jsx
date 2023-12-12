@@ -51,7 +51,7 @@ const Post = (params) => {
             <p onClick={() => dispatch(getComments(params.postId))}>
               View all comments
             </p>
-            <Comments />
+            <Comments postId={params.postId} />
           </div>
         </section>
       </article>

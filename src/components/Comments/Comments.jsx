@@ -3,7 +3,6 @@ import commentsService from "../../features/comments/commentsService";
 import Comment from "../Comment/Comment";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getComments,
   deleteComment,
   likeComment,
   unlikeComment,
@@ -41,7 +40,7 @@ const Comments = ({ postId }) => {
     }
   };
 
-  const comment = comments.map((comment) => (
+  const comment = comments.comments?.map((comment) => (
     <Comment
       key={comment._id}
       comment={comment}
@@ -51,7 +50,7 @@ const Comments = ({ postId }) => {
     />
   ));
 
-  return <div>{comment}</div>;
+  return <div>{comments.postId == postId ? comment : ""}</div>;
 };
 
 export default Comments;
