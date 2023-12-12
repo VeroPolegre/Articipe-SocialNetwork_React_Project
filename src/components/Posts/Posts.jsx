@@ -24,6 +24,7 @@ const Posts = () => {
         postId={post._id}
         username={post.userId.username}
         avatar={post.userId.avatar}
+        likes={post.likes}
       />
     );
   });

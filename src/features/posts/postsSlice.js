@@ -2,55 +2,62 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import postsService from "./postsService";
 
 const initialState = {
-	posts: [],
-	post: {},
-	isError: false,
-	isSuccess: false,
-	message: "",
+  posts: [],
+  post: {},
+  isError: false,
+  isSuccess: false,
+  message: "",
 };
 
 export const create = createAsyncThunk(
-	"posts/create",
-	async (formData, thunkAPI) => {
-		try {
-			return await postsService.createPost(formData);
-		} catch (error) {
-			const message = error.response.data.message;
-			console.error(error);
-			return thunkAPI.rejectWithValue(message);
-		}
-	}
+  "posts/create",
+  async (formData, thunkAPI) => {
+    try {
+      return await postsService.createPost(formData);
+    } catch (error) {
+      const message = error.response.data.message;
+      console.error(error);
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
 );
 
 export const getPosts = createAsyncThunk("posts/getPosts", async () => {
-	try {
-		return await postsService.getPosts();
-	} catch (error) {
-		console.error(error);
-	}
+  try {
+    return await postsService.getPosts();
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 export const getPostById = createAsyncThunk(
-	"posts/getPostById",
-	async (_id) => {
-		try {
-			return await postsService.getPostById(_id);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+  "posts/getPostById",
+  async (_id) => {
+    try {
+      return await postsService.getPostById(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 );
 
 export const getPostByTitle = createAsyncThunk(
-	"posts/getPostByTitle",
-	async (title) => {
-		try {
-			return await postsService.getPostByTitle(title);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+  "posts/getPostByTitle",
+  async (title) => {
+    try {
+      return await postsService.getPostByTitle(title);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 );
+export const like = createAsyncThunk("posts/like", async (_id) => {
+  try {
+    return await postsService.like(_id);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 export const getPostsByKeywords = createAsyncThunk(
 	"posts/getPostsByKeywords",
@@ -125,7 +132,16 @@ export const postsSlice = createSlice({
 			.addCase(getPostsByKeywords.rejected, (state, action) => {
 				state.isError = true;
 				state.message = action.payload;
-			});
+			})
+			.addCase(like.fulfilled, (state, action) => {
+				const posts = state.posts.map((post) => {
+				  if (post._id === action.payload._id) {
+					return action.payload;
+				  }
+				  return post;
+				});
+				state.posts = posts;
+			  });
 	},
 });
 
