@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/comments";
+const API_URL = "http://localhost:8080/comments/";
 
 const createComment = async (formData) => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.post(API_URL + postId, formData, {
     headers: {
       Authorization: token,
@@ -12,6 +13,7 @@ const createComment = async (formData) => {
 };
 
 const getComments = async (postId) => {
+  console.log("postId:", postId);
   const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.get(API_URL + postId, {
     headers: {
@@ -22,6 +24,7 @@ const getComments = async (postId) => {
 };
 
 const deleteComment = async (commentId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.delete(API_URL + commentId, {
     headers: {
       Authorization: token,
@@ -31,6 +34,7 @@ const deleteComment = async (commentId) => {
 };
 
 const likeComment = async (commentId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.put(
     API_URL + "/like/" + commentId,
     {},
@@ -44,6 +48,7 @@ const likeComment = async (commentId) => {
 };
 
 const unlikeComment = async (commentId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.put(
     API_URL + "/unlike/" + commentId,
     {},

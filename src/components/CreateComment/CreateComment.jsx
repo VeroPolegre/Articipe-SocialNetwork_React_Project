@@ -1,28 +1,60 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createComment } from "../../features/comments/commentsSlice";
+import commentsService from "../../features/comments/commentsService";
 
 const CreateComment = ({ postId }) => {
-  const dispatch = useDispatch();
-  const [text, setText] = useState("");
-  const [image, setImage] = useState(null);
+  const [formData, setFormData] = useState({
+    text: "",
+  });
 
-  const handleCreateComment = async () => {
-    try {
-      await dispatch(createComment({ postId, text, image }));
-      setText("");
-      setImage(null);
-    } catch (error) {
-      console.error("Error creating comment:", error);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = (formData) => {
+    const newErrors = {};
+
+    if (!formData.get("text")) {
+      newErrors.text = "Comment cannot be empty";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const onChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCreateComment = async (e) => {
+    e.preventDefault();
+
+    if (validateForm(formData)) {
+      try {
+        await commentsService.createComment(postId, formData);
+        setFormData({
+          text: "",
+        });
+      } catch (error) {
+        console.error("Error creating comment:", error);
+      }
     }
   };
 
   return (
-    <div>
-      <textarea value={text} onChange={(e) => setText(e.target.value)} />
-      <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-      <button onClick={handleCreateComment}>Comment</button>
-    </div>
+    <form onSubmit={handleCreateComment} className="form-comment">
+      <div>
+        <textarea
+          name="text"
+          value={formData.text}
+          onChange={onChange}
+          placeholder="Type your comment..."
+        />
+        {errors.text && <p>{errors.text}</p>}
+      </div>
+      <button type="submit">Submit Comment</button>
+    </form>
   );
 };
 

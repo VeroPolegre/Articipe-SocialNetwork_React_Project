@@ -25,9 +25,9 @@ export const createComment = createAsyncThunk(
 
 export const getComments = createAsyncThunk(
   "comments/getComments",
-  async (undefined, thunkAPI) => {
+  async (postId, thunkAPI) => {
     try {
-      return await commentsService.getComments();
+      return await commentsService.getComments(postId);
     } catch (error) {
       console.error(error);
       return thunkAPI.rejectWithValue("Error fetching comments");
