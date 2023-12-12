@@ -154,7 +154,6 @@ export const postsSlice = createSlice({
 				});
 				state.posts = posts;
 			})
-
 			.addCase(unlike.fulfilled, (state, action) => {
 				const updatedPosts = state.posts.map((post) => {
 					if (post._id === action.payload._id) {
