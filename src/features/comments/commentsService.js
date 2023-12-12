@@ -47,9 +47,10 @@ const likeComment = async (commentId) => {
 };
 
 const unlikeComment = async (commentId) => {
+  console.log(commentId);
   const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.put(
-    API_URL + "/unlike/" + commentId,
+    API_URL + "unlike/" + commentId,
     {},
     {
       headers: {

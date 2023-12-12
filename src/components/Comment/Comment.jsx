@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import "./Comment.scss";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  likeComment,
+  unlikeComment,
+} from "../../features/comments/commentsSlice";
 
-const Comment = ({ comment, onDelete, onLike, onUnlike }) => {
-  const [isLiked, setIsLiked] = useState(false);
-
+const Comment = ({ comment, onDelete, onUnlike }) => {
+  const { user } = useSelector((state) => state.auth);
+  const isLiked = comment.likes.includes(user._id);
+  const dispatch = useDispatch();
   const handleDelete = () => {
     onDelete(comment._id);
   };
 
   const handleLike = () => {
     if (!isLiked) {
-      onLike(comment._id);
+      dispatch(likeComment(comment._id));
     } else {
-      onUnlike(comment._id);
+      dispatch(unlikeComment(comment._id));
     }
-    setIsLiked(!isLiked);
   };
 
   return (

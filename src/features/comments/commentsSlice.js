@@ -115,6 +115,16 @@ export const commentsSlice = createSlice({
       })
       .addCase(likeComment.fulfilled, (state, action) => {
         state.comment = action.payload;
+        const commentsUpdated = state.comments.comments.map((comment) => {
+          if (comment._id == action.payload._id) {
+            comment = action.payload;
+          }
+          return comment;
+        });
+        state.comments = {
+          postId: state.comments.postId,
+          comments: commentsUpdated,
+        };
         state.isSuccess = true;
         state.message = "Comment liked successfully.";
       })
