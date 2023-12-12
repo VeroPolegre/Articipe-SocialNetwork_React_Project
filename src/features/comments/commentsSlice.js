@@ -39,8 +39,7 @@ export const deleteComment = createAsyncThunk(
   "comments/deleteComment",
   async (commentId, thunkAPI) => {
     try {
-      await commentsService.deleteComment(commentId);
-      return commentId;
+      return await commentsService.deleteComment(commentId);
     } catch (error) {
       console.error(error);
       return thunkAPI.rejectWithValue("Error deleting comment");
@@ -103,9 +102,14 @@ export const commentsSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(deleteComment.fulfilled, (state, action) => {
-        state.comments = state.comments.filter(
-          (comment) => comment._id !== action.payload
+        console.log(action.payload);
+        const commentsUpdated = state.comments.comments.filter(
+          (comment) => comment._id != action.payload.comment._id
         );
+        state.comments = {
+          postId: state.comments.postId,
+          comments: commentsUpdated,
+        };
         state.isSuccess = true;
         state.message = "Comment deleted successfully.";
       })

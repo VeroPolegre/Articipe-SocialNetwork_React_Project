@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Comment.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteComment,
   likeComment,
   unlikeComment,
 } from "../../features/comments/commentsSlice";
@@ -10,8 +11,9 @@ const Comment = ({ comment, onDelete, onUnlike }) => {
   const { user } = useSelector((state) => state.auth);
   const isLiked = comment.likes.includes(user._id);
   const dispatch = useDispatch();
+
   const handleDelete = () => {
-    onDelete(comment._id);
+    dispatch(deleteComment(comment._id));
   };
 
   const handleLike = () => {

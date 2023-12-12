@@ -29,6 +29,7 @@ const deleteComment = async (commentId) => {
       Authorization: token,
     },
   });
+  console.log(res.data);
   return res.data;
 };
 
