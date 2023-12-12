@@ -1,9 +1,8 @@
-import { Carousel } from "antd";
+import React, { useState } from "react";
 import "./Post.scss";
-import { useDispatch } from "react-redux";
+import { Carousel } from "antd";
 import { getComments } from "../../features/comments/commentsSlice";
 import Comments from "../Comments/Comments";
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { like } from "../../features/posts/postsSlice";
 
