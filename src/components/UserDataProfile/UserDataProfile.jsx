@@ -1,23 +1,26 @@
 import "./UserDataProfile.scss";
 
-const UserDataProfile = () => {
+const UserDataProfile = (userData) => {
+
+const avatarImg = userData.user.avatar
+
     return (
         <section className="user-data-main">
             <article className="profile-metrics">
                 <div className="img-container">
-                    <img src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg" alt="" />
+                    <img src={`http://localhost:8080/uploads/${avatarImg}`} alt="" />
                 </div>
                 <ul>
                     <li>
-                        <h5>38</h5>
+                        <h5>{userData.posts}</h5>
                         <p>posts</p>
                     </li>
                     <li>
-                        <h5>379</h5>
+                        <h5>{userData.followers}</h5>
                         <p>followers</p>
                     </li>
                     <li>
-                        <h5>287</h5>
+                        <h5>{userData.following}</h5>
                         <p>following</p>
                     </li>
                 </ul>

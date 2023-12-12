@@ -2,16 +2,18 @@ import { useLocation } from "react-router-dom";
 import "./PageNav.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getLoggedUser } from "../../../features/user/userSlice";
 
-const PageNav = () => {
-	const location = useLocation();
-	const [showHomeMenu, setShowHomeMenu] = useState(false);
-	const [showUserMenu, setShowUserMenu] = useState(false);
+const PageNav = ({username}) => {
+    
+    const location = useLocation();
+    const [showHomeMenu, setShowHomeMenu] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
 
-	useEffect(() => {
-		setShowHomeMenu(location.pathname === "/");
-		setShowUserMenu(location.pathname === "/profile");
-	}, [location]);
+    useEffect(() => {
+        setShowHomeMenu(location.pathname === "/");
+        setShowUserMenu(location.pathname === "/profile");
+    }, [location]);
 
     if (showHomeMenu) {
         return (
@@ -33,7 +35,7 @@ const PageNav = () => {
         return (
             <header>
                 <section>
-                    <h4>Username</h4>
+                    <h4>{username.username}</h4>
                 </section>
                 <section>
                     <span className="material-symbols-outlined">menu</span>
