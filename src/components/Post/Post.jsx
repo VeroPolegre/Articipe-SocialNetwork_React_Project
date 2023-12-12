@@ -4,15 +4,18 @@ import { getComments } from "../../features/comments/commentsSlice";
 import Comments from "../Comments/Comments";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { like } from "../../features/posts/postsSlice";
+import { like, unlike } from "../../features/posts/postsSlice";
 
 const Post = (params) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
- const isLiked= params.likes.includes(user._id)
+  const isAlreadyLiked = params.likes.includes(user._id);
   const handleLikeClick = () => {
-
-    dispatch(like(params.postId));
+    if (isAlreadyLiked) {
+      dispatch(unlike(params.postId));
+    } else {
+      dispatch(like(params.postId));
+    }
   };
 
   const postImg = params.images.map((img) => {
@@ -39,18 +42,18 @@ const Post = (params) => {
               <p>{params.category}</p>
             </div>
           </div>
-          <Carousel >{postImg}</Carousel>
+          <Carousel>{postImg}</Carousel>
         </section>
         <section className="post-details">
           <div className="post-like-menu">
             <div>
               <span
                 className={`material-symbols-outlined ${
-                  isLiked ? "material-symbols-filled" : ""
+                  isAlreadyLiked ? "material-symbols-filled" : ""
                 }`}
                 onClick={handleLikeClick}
               >
-                {isLiked ? "favorite" : "favorite_border"}
+                {isAlreadyLiked ? "favorite" : "favorite_border"}
               </span>
               <span className="material-symbols-outlined">add_comment</span>
             </div>
