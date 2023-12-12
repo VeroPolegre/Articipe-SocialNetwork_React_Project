@@ -1,64 +1,40 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import commentsService from "../../features/comments/commentsService";
-import {
-  deleteComment,
-  updateCommentLikes,
-} from "../../features/comments/commentsSlice";
 
-const CommentComponent = ({ comment }) => {
-  const [isUpdatingLikes, setIsUpdatingLikes] = useState(false);
-  const dispatch = useDispatch();
+const Comment = ({ comment, onDelete, onLike, onUnlike }) => {
+  const [isLiked, setIsLiked] = useState(false);
 
-  const commentText = comment.text || "No text available";
-
-  const handleDelete = async () => {
-    await commentsService.deleteComment(comment._id);
-    dispatch(deleteComment(comment._id));
+  const handleDelete = () => {
+    onDelete(comment._id);
   };
 
-  const handleLike = async () => {
-    if (isUpdatingLikes) return;
-
-    try {
-      setIsUpdatingLikes(true);
-      await commentsService.likeComment(comment._id);
-      dispatch(
-        updateCommentLikes({ commentId: comment._id, userId: comment.userId })
-      );
-    } finally {
-      setIsUpdatingLikes(false);
+  const handleLike = () => {
+    if (!isLiked) {
+      onLike(comment._id);
+    } else {
+      onUnlike(comment._id);
     }
-  };
-
-  const handleUnlike = async () => {
-    if (isUpdatingLikes) return;
-
-    try {
-      setIsUpdatingLikes(true);
-      await commentsService.unlikeComment(comment._id);
-      dispatch(
-        updateCommentLikes({ commentId: comment._id, userId: comment.userId })
-      );
-    } finally {
-      setIsUpdatingLikes(false);
-    }
+    setIsLiked(!isLiked);
   };
 
   return (
     <div>
-      <p>{commentText}</p>
+      <p>{comment.text || "No text available"}</p>
       {comment.image && <img src={comment.image} alt="comment" />}
-      <p>Likes: {comment.likes.length}</p>
-      <button onClick={handleLike} disabled={isUpdatingLikes}>
-        Like
-      </button>
-      <button onClick={handleUnlike} disabled={isUpdatingLikes}>
-        Unlike
-      </button>
-      <button onClick={handleDelete}>Delete</button>
+      <div className="post-like-menu">
+        <div>
+          <span
+            className={`material-symbols-outlined ${isLiked ? "liked" : ""}`}
+            onClick={handleLike}
+          >
+            favorite
+          </span>
+          <span className="material-symbols-outlined" onClick={handleDelete}>
+            delete
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CommentComponent;
+export default Comment;

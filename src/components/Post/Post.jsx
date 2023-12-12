@@ -3,6 +3,7 @@ import "./Post.scss";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { getComments } from "../../features/comments/commentsSlice";
+import Comments from "../Comments/Comments";
 
 const Post = (params) => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Post = (params) => {
 
   return (
     <>
-      <article className="post" key={params._id}>
+      <article className="post" key={params.postId}>
         <section className="post-main">
           <div className="post-user-details">
             <div className="img-container profile-pic-post">
@@ -47,7 +48,10 @@ const Post = (params) => {
           <div>
             <span className="semi-bold">{params.title} </span>
             <span>{params.content}</span>
-            <p onClick={() => dispatch(getComments())}>View all comments</p>
+            <p onClick={() => dispatch(getComments(params.postId))}>
+              View all comments
+            </p>
+            <Comments postId={params.postId} />
           </div>
         </section>
       </article>

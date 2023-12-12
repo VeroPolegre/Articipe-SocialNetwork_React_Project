@@ -21,6 +21,7 @@ const Posts = () => {
         title={post.title}
         content={post.content}
         key={post._id}
+        postId={post._id}
         username={post.userId.username}
         avatar={post.userId.avatar}
       />
