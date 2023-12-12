@@ -42,6 +42,21 @@ const like = async (_id) => {
 
   return res.data;
 };
+const unlike = async (_id) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  const res = await axios.put(
+    API_URL + "/unlike/" + _id,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+  return res.data;
+};
 
 const getPostsByKeywords = async (keywords) => {
   const res = await axios.get(`${API_URL}/explore?keywords=${keywords}`);
@@ -60,6 +75,7 @@ const postsService = {
   getPostByTitle,
   getPostsByKeywords,
   like,
+  unlike,
 };
 
 export default postsService;
