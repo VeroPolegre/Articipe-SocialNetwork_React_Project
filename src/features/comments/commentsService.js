@@ -2,39 +2,57 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/comments";
 
-const createComment = async (postId, text, image) => {
-  const formData = new FormData();
-  formData.append("text", text);
-  formData.append("image", image);
-
-  const res = await axios.post(`${API_URL}/${postId}`, formData);
+const createComment = async (formData) => {
+  const res = await axios.post(API_URL + postId, formData, {
+    headers: {
+      Authorization: token,
+    },
+  });
   return res.data;
 };
 
-const getComments = async () => {
-  const res = await axios.get(API_URL);
+const getComments = async (postId) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const res = await axios.get(API_URL + postId, {
+    headers: {
+      Authorization: token,
+    },
+  });
   return res.data;
 };
 
 const deleteComment = async (commentId) => {
-  const res = await axios.delete(`${API_URL}/${commentId}`);
+  const res = await axios.delete(API_URL + commentId, {
+    headers: {
+      Authorization: token,
+    },
+  });
   return res.data;
 };
 
 const likeComment = async (commentId) => {
-  const res = await axios.put(`${API_URL}/like/${commentId}`);
+  const res = await axios.put(
+    API_URL + "/like/" + commentId,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
   return res.data;
 };
 
 const unlikeComment = async (commentId) => {
-  const res = await axios.put(`${API_URL}/unlike/${commentId}`);
-  return res.data;
-};
-
-const updateCommentLikes = async (commentId, userId) => {
-  const res = await axios.put(`${API_URL}/updateLikes/${commentId}`, {
-    userId,
-  });
+  const res = await axios.put(
+    API_URL + "/unlike/" + commentId,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
   return res.data;
 };
 
@@ -44,7 +62,6 @@ const commentsService = {
   deleteComment,
   likeComment,
   unlikeComment,
-  updateCommentLikes,
 };
 
 export default commentsService;

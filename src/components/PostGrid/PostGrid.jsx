@@ -1,21 +1,28 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./PostGrid.scss";
 
-const testImg = "https://images.pexels.com/photos/19315251/pexels-photo-19315251/free-photo-of-hombre-sentado-sombrero-retrato.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+const PostGrid = () => {
+	const { posts } = useSelector((state) => state.posts);
+	console.log("posts", posts);
 
-const PostGrid = (posts) => {
-    return (
-        <main className="main-grid">
+	if (posts.length === 0) {
+		return <div>No posts found</div>;
+	}
 
-            {/* Añadir la logica del back--------------------- */}
-            {/* {/* {posts.images.map(image => {
-                return (
-                    <div className="img-container ">
-                        <img src={image} alt="" />
-                    </div>
-                )
-            })} */}
-        </main>
-    )
+	return (
+		<main className="main-grid">
+			{posts.map((post) =>
+				post.images.map((image, i) => (
+					<div className="img-container" key={i}>
+						<Link to={`/posts/${image.postId}`} className="post-link">
+							<img src={image.url} />
+						</Link>
+					</div>
+				))
+			)}
+		</main>
+	);
 };
 
 export default PostGrid;

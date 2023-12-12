@@ -1,0 +1,51 @@
+section.user-data-main {
+
+    article.profile-metrics {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 0.5em 2em;
+
+        div.img-container {
+            width: 5.5em;
+            height: 5.5em;
+            border-radius: 10px;
+        }
+
+        ul {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 1.5em;
+
+            li {
+                text-align: center;
+
+                p {
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+
+    article.profile-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.4em;
+        padding: 0.5em 2em;
+
+        button {
+            padding: 0px 5px;
+            width: 100%;
+        }
+
+        .button-1 {
+            background-color: rgb(63, 143, 255);
+            color: white;
+        }
+
+        .button-3 {
+            width: 15%;
+        }
+    }
+}

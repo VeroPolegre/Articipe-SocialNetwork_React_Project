@@ -4,21 +4,20 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const PageNav = () => {
+	const location = useLocation();
+	const [showHomeMenu, setShowHomeMenu] = useState(false);
+	const [showUserMenu, setShowUserMenu] = useState(false);
 
-    const location = useLocation();
-    const [showHomeMenu, setShowHomeMenu] = useState(false);
-    const [showUserMenu, setShowUserMenu] = useState(false);
-
-    useEffect(() => {
-        setShowHomeMenu(location.pathname === '/');
-        setShowUserMenu(location.pathname === '/profile');
-    }, [location]);
+	useEffect(() => {
+		setShowHomeMenu(location.pathname === "/");
+		setShowUserMenu(location.pathname === "/profile");
+	}, [location]);
 
     if (showHomeMenu) {
         return (
             <header>
                 <section>
-                    <h4>ARTCIPE</h4>
+                    <h4>ARTICIPE</h4>
                 </section>
                 <section>
                     <span className="material-symbols-outlined">favorite</span>
@@ -46,7 +45,7 @@ const PageNav = () => {
             <>
                 <header>
                     <section>
-                        <h4>ARTCIPE</h4>
+                        <h4>ARTICIPE</h4>
                     </section>
                     <section>
                         <span className="material-symbols-outlined">favorite</span>
