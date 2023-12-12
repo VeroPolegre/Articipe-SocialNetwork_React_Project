@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Comment.scss";
 
 const Comment = ({ comment, onDelete, onLike, onUnlike }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -20,7 +21,7 @@ const Comment = ({ comment, onDelete, onLike, onUnlike }) => {
     <div>
       <p>{comment.text || "No text available"}</p>
       {comment.image && <img src={comment.image} alt="comment" />}
-      <div className="post-like-menu">
+      <div className="post-like-menu-comments">
         <div>
           <span
             className={`material-symbols-outlined ${isLiked ? "liked" : ""}`}

@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import "./Comments.scss";
 import commentsService from "../../features/comments/commentsService";
 import Comment from "../Comment/Comment";
 import { useSelector, useDispatch } from "react-redux";
@@ -50,7 +51,11 @@ const Comments = ({ postId }) => {
     />
   ));
 
-  return <div>{comments.postId == postId ? comment : ""}</div>;
+  return (
+    <div className="comment-text">
+      {comments.postId == postId ? comment : ""}
+    </div>
+  );
 };
 
 export default Comments;

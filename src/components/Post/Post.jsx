@@ -1,12 +1,13 @@
 import { Carousel } from "antd";
 import "./Post.scss";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getComments } from "../../features/comments/commentsSlice";
 import Comments from "../Comments/Comments";
 
 const Post = (params) => {
   const dispatch = useDispatch();
+  const [showComments, setShowComments] = useState(false);
   const onChange = (currentSlide) => {
     // console.log(currentSlide);
   };
@@ -18,6 +19,13 @@ const Post = (params) => {
       </div>
     );
   });
+
+  const toggleComments = () => {
+    setShowComments(!showComments);
+    if (!showComments) {
+      dispatch(getComments(params.postId));
+    }
+  };
 
   return (
     <>
@@ -48,10 +56,10 @@ const Post = (params) => {
           <div>
             <span className="semi-bold">{params.title} </span>
             <span>{params.content}</span>
-            <p onClick={() => dispatch(getComments(params.postId))}>
-              View all comments
+            <p onClick={toggleComments}>
+              {showComments ? "Hide" : "View"} all comments
             </p>
-            <Comments postId={params.postId} />
+            {showComments && <Comments postId={params.postId} />}
           </div>
         </section>
       </article>
