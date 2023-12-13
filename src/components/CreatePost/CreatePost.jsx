@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { create } from "../../features/posts/postsSlice";
+import { Modal, Button, Input } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
-const CreatePost = () => {
+const CreatePost = ({ visible, onCancel }) => {
 	const [formData, setFormData] = useState({
 		images: [],
 		title: "",
 		content: "",
+		category: "",
 		keywords: [],
 	});
 
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
 	const [errors, setErrors] = useState({});
 
 	const validateForm = (formData) => {
@@ -57,68 +59,94 @@ const CreatePost = () => {
 
 		if (validateForm(formData)) {
 			dispatch(create(formData));
+			onCancel();
 			navigate("/");
 		}
 	};
+
 	return (
-		<form onSubmit={onSubmit} className="form-post">
-			<div>
-				<input
-					type="file"
-					name="images"
-					onChange={onChange}
-					accept="image/png, image/jpeg, image/jpg"
-					multiple
-				/>
-				{errors.images && <p>{errors.images}</p>}
-			</div>
-			<div>
-				<select name="category">
-					<option value="">--Please pick a category--</option>
-					<option value="Illustration">Illustration</option>
-					<option value="Photography">Photography</option>
-					<option value="Concept art">Concept art</option>
-					<option value="Art direction">Art direction</option>
-					<option value="Graphic design">Graphic design</option>
-					<option value="Collage">Collage</option>
-					<option value="AI">AI</option>
-					<option value="Fashion">Fashion</option>
-					<option value="UI/UX">UI/UX</option>
-					<option value="Branding">Branding</option>
-					<option value="Video / Film">Video / Film</option>
-					<option value="Animation">Animation</option>
-					<option value="3D">3D</option>
-				</select>{errors.category && <p>{errors.category}</p>}
-			</div>
-			<div>
-				<input
-					type="text"
-					name="title"
-					onChange={onChange}
-					placeholder="title"
-				/>
-				{errors.title && <p>{errors.title}</p>}
-			</div>
-			<div>
-				<textarea
-					type="text"
-					name="content"
-					onChange={onChange}
-					placeholder="description"
-				/>
-				{errors.content && <p>{errors.content}</p>}
-			</div>
-			<div>
-				<textarea
-					type="text"
-					name="keywords"
-					onChange={onChange}
-					placeholder="keywords"
-				/>
-				{errors.keywords && <p>{errors.keywords}</p>}
-			</div>
-			<button type="submit">Create Post</button>
-		</form>
+		<Modal
+			open={visible}
+			onCancel={onCancel}
+			footer={null}
+			width={600}
+			className="create-post-modal">
+			<form onSubmit={onSubmit}>
+				<div className="ant-modal-header">
+					<h3>Create New Post</h3>
+				</div>
+				<div className="ant-modal-body">
+					<div className="image-upload-column">
+						<Input
+							type="file"
+							name="images"
+							accept="image/png, image/jpeg, image/jpg"
+							multiple
+							onChange={onChange}
+						/>
+						{errors.images && <p>{errors.images}</p>}
+					</div>
+					<div className="details-column">
+						<div className="ant-form-item">
+							<label className="material-symbols-outlined">category</label>
+							<select name="category">
+								<option value="">--Please pick a category--</option>
+								<option value="Illustration">Illustration</option>
+								<option value="Photography">Photography</option>
+								<option value="Concept art">Concept art</option>
+								<option value="Art direction">Art direction</option>
+								<option value="Graphic design">Graphic design</option>
+								<option value="Collage">Collage</option>
+								<option value="AI">AI</option>
+								<option value="Fashion">Fashion</option>
+								<option value="UI/UX">UI/UX</option>
+								<option value="Branding">Branding</option>
+								<option value="Video / Film">Video / Film</option>
+								<option value="Animation">Animation</option>
+								<option value="3D">3D</option>
+							</select>
+							{errors.category && <p>{errors.category}</p>}
+						</div>
+						<div className="ant-form-item">
+							<label className="material-symbols-outlined">title</label>
+							<Input
+								type="text"
+								name="title"
+								onChange={onChange}
+								placeholder="Title"
+							/>
+							{errors.title && <p>{errors.title}</p>}
+						</div>
+						<div className="ant-form-item">
+							<label className="material-symbols-outlined">description</label>
+							<Input.TextArea
+								type="text"
+								name="content"
+								onChange={onChange}
+								placeholder="Description"
+							/>
+							{errors.content && <p>{errors.content}</p>}
+						</div>
+						<div className="ant-form-item">
+							<label className="material-symbols-outlined">label</label>
+							<Input.TextArea
+								type="text"
+								name="keywords"
+								onChange={onChange}
+								placeholder="Keywords"
+							/>
+							{errors.keywords && <p>{errors.keywords}</p>}
+						</div>
+					</div>
+				</div>
+				<div className="create-post-actions">
+					<Button onClick={onCancel}>Close</Button>
+					<Button type="primary" htmlType="submit">
+						Share
+					</Button>
+				</div>
+			</form>
+		</Modal>
 	);
 };
 

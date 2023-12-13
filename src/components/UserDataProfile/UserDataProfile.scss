@@ -32,7 +32,7 @@ section.user-data-main {
         display: flex;
         justify-content: center;
         gap: 0.4em;
-        padding: 0.5em 2em;
+        padding: 1em 2em;
 
         button {
             padding: 0px 5px;
@@ -46,6 +46,27 @@ section.user-data-main {
 
         .button-3 {
             width: 15%;
+        }
+    }
+
+    article.user-posts-nav {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0.75vw;
+        gap: 0.5vw;
+        span {
+            width: 32.5vw;
+            text-align: center;
+            font-size: xx-large;
+            padding: 0.3em 0em;
+        }
+        span.active {
+            color: #4b4b4b;
+            border-bottom: 2px solid #4b4b4b;
+        }
+        span.inactive {
+            border-bottom: 2px solid #dddddd;
+            color: #dddddd;
         }
     }
 }
