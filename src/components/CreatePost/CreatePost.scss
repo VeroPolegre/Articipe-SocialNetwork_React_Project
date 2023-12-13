@@ -1,0 +1,46 @@
+// CreatePost.scss
+
+.create-post-modal {
+    .ant-modal-header {
+      text-align: center;
+    }
+  
+    .ant-modal-body {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .image-upload-column {
+      flex: 2;
+      margin-right: 20px;
+  
+      .ant-upload {
+        width: 100%;
+      }
+  
+      .image-preview img {
+        width: 100%; // Adjust to fit the container
+        height: auto;
+        max-width: 100%; // Ensure it doesn't exceed the container width
+        max-height: 100%; // Ensure it doesn't exceed the container height
+        margin: 8px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+    }
+  
+    .details-column {
+      flex: 1;
+  
+      .ant-form-item {
+        margin-bottom: 16px;
+      }
+    }
+  
+    .create-post-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+  
