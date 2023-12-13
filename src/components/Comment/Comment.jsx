@@ -7,11 +7,11 @@ import {
   unlikeComment,
 } from "../../features/comments/commentsSlice";
 
-const Comment = ({ comment, onDelete, onUnlike }) => {
+const Comment = ({ comment }) => {
   const { user } = useSelector((state) => state.auth);
   const isLiked = comment.likes.includes(user._id);
   const dispatch = useDispatch();
-
+  const isCommentOwner = comment.userId.includes(user._id);
   const handleDelete = () => {
     dispatch(deleteComment(comment._id));
   };
@@ -36,9 +36,11 @@ const Comment = ({ comment, onDelete, onUnlike }) => {
           >
             favorite
           </span>
-          <span className="material-symbols-outlined" onClick={handleDelete}>
-            delete
-          </span>
+          {isCommentOwner && (
+            <span className="material-symbols-outlined" onClick={handleDelete}>
+              delete
+            </span>
+          )}
         </div>
       </div>
     </div>
