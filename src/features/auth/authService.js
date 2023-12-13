@@ -26,13 +26,13 @@ const logout = async () => {
   if (res.data) {
     localStorage.clear();
   }
-  return res.data
+  return res.data;
 };
 
 const authService = {
   register,
   login,
-  logout
+  logout,
 };
 
 export default authService;
