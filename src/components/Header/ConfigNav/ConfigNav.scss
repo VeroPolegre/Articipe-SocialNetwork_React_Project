@@ -1,0 +1,12 @@
+ul.ant-modal-header {
+    li {
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 1.5em;
+        align-items: center;
+        span {
+            font-size: xx-large;
+            margin-right: 0.5em;
+        }
+    }
+}

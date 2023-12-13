@@ -2,13 +2,30 @@ import { useLocation } from "react-router-dom";
 import "./PageNav.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ConfigNav from "../ConfigNav/ConfigNav";
+import { Link } from "react-router-dom";
 
-const PageNav = ({username}) => {
-    
+const PageNav = ({ username }) => {
+
     const location = useLocation();
     const [showHomeMenu, setShowHomeMenu] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [showExploreMenu, setShowExploreMenu] = useState(false);
+
+
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+	const showModal = () => {
+		setIsModalVisible(true);
+	};
+
+	const handleCancel = () => {
+		setIsModalVisible(false);
+	};
+
+
+
 
     useEffect(() => {
         setShowHomeMenu(location.pathname === "/");
@@ -24,7 +41,10 @@ const PageNav = ({username}) => {
                 </section>
                 <section>
                     <span className="material-symbols-outlined">favorite</span>
-                    <span className="material-symbols-outlined">menu</span>
+                    <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
+                    <Link to="#" onClick={showModal}>
+                        <span className="material-symbols-outlined">menu</span>
+                    </Link>
                 </section>
                 <div>
                     <span className="material-symbols-outlined right-border">explore</span>

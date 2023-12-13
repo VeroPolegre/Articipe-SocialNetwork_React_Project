@@ -41,6 +41,10 @@ export const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
       });
   },
 });
@@ -66,6 +70,14 @@ export const login = createAsyncThunk("auth/login", async (user) => {
     console.error(error);
     const message = error.response.data.message;
     return thunkAPI.rejectWithValue(message);
+  }
+});
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  try {
+    return await authService.logout();
+  } catch (error) {
+    console.error(error);
   }
 });
 
