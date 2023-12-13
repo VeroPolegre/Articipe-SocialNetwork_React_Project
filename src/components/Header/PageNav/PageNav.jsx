@@ -61,7 +61,8 @@ const PageNav = ({ user }) => {
           <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
           <Link to="#" onClick={showModal}>
             <span className="material-symbols-outlined">menu</span>
-          </Link>        </section>
+          </Link>
+        </section>
       </header>
     );
   } else if (showExploreMenu) {
