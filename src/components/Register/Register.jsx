@@ -193,6 +193,10 @@ const Register = () => {
           Register now
         </button>
       </form>
+      <p className="redirect-message">
+        Accidentally wandered into the registration zone? <br />
+        <a href="../signin">Gracefully retreat to the login page.</a>
+      </p>
     </>
   );
 };

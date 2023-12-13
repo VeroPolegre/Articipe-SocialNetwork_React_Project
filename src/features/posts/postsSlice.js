@@ -4,6 +4,7 @@ import postsService from "./postsService";
 const initialState = {
 	posts: [],
 	post: {},
+	hasMorePages: true,
 	isError: false,
 	isSuccess: false,
 	message: "",
@@ -22,13 +23,17 @@ export const create = createAsyncThunk(
 	}
 );
 
-export const getPosts = createAsyncThunk("posts/getPosts", async () => {
-	try {
-		return await postsService.getPosts();
-	} catch (error) {
-		console.error(error);
+export const getPosts = createAsyncThunk(
+	"posts/getPosts",
+	async ({ page, limit } = {}) => {
+		try {
+			return await postsService.getPosts({ page, limit });
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
 	}
-});
+);
 
 export const getFollowersPosts = createAsyncThunk("posts/getFollowersPosts", async () => {
 	try {
@@ -109,9 +114,10 @@ export const postsSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(getPosts.fulfilled, (state, action) => {
+				state.posts = [...state.posts, ...action.payload.posts];
+				state.hasMorePages = action.payload.hasMorePages;
 				state.isSuccess = true;
 				state.message = action.payload.message;
-				state.posts = action.payload;
 			})
 			.addCase(getPosts.rejected, (state, action) => {
 				state.isError = true;

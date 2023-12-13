@@ -98,7 +98,7 @@ const Login = () => {
 
       {loginError && <p>{loginError}</p>}
 
-      <p>
+      <p className="redirect-message">
         Don't have an account yet?<br></br>
         <a href="../register">Create one now.</a>
       </p>

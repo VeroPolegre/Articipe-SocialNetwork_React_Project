@@ -1,35 +1,54 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { getPosts } from "../../features/posts/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../Post/Post";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Posts = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
+	const { posts, hasMorePages } = useSelector((state) => state.posts);
+	let page = 1;
+	let limit = 3;
 
-  const { posts } = useSelector((state) => state.posts);
+	useEffect(() => {
+		dispatch(getPosts({ page, limit }));
+		console.log("Fetching posts for page: 1");
+	}, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
+	const loadMore = () => {
+		if (hasMorePages) {
+			dispatch(getPosts({ page: Math.ceil(posts.length / limit) + 1, limit }));
+			console.log("Fetching more posts...");
+		}
+	};
 
-  const post = posts.map((post) => {
-    return (
-      <Post
-        images={post.images}
-        category={post.category}
-        title={post.title}
-        content={post.content}
-        key={post._id}
-        postId={post._id}
-        username={post.userId.username}
-        avatar={post.userId.avatar}
-        likes={post.likes}
-      />
-    );
-  });
+	console.log("Posts:", posts);
+	console.log("hasMorePages:", hasMorePages);
 
-  return <main>{post}</main>;
+	return (
+		<div>
+			<InfiniteScroll
+				dataLength={posts.length}
+				next={loadMore}
+				hasMore={hasMorePages}
+				loader={<h4>Loading...</h4>}
+				endMessage={<div>It is all, nothing more 🤐</div>}>
+				{posts.map((post) => (
+					<Post
+						images={post.images}
+						category={post.category}
+						title={post.title}
+						content={post.content}
+						key={post._id}
+						postId={post._id}
+						username={post.userId.username}
+						avatar={post.userId.avatar}
+						likes={post.likes}
+					/>
+				))}
+			</InfiniteScroll>
+		</div>
+	);
 };
 
 export default Posts;

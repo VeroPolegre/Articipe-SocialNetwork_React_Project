@@ -129,7 +129,6 @@ export const commentsSlice = createSlice({
           comments: commentsUpdated,
         };
         state.isSuccess = true;
-        state.message = "Comment liked successfully.";
       })
       .addCase(likeComment.rejected, (state, action) => {
         state.isError = true;
@@ -148,7 +147,6 @@ export const commentsSlice = createSlice({
           comments: commentsUpdated,
         };
         state.isSuccess = true;
-        state.message = "Comment unliked successfully.";
       })
       .addCase(unlikeComment.rejected, (state, action) => {
         state.isError = true;
@@ -156,6 +154,6 @@ export const commentsSlice = createSlice({
       });
   },
 });
-export const { reset } = commentsSlice.actions;
 
+export const { reset } = commentsSlice.actions;
 export default commentsSlice.reducer;
