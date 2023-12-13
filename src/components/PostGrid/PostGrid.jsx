@@ -7,25 +7,12 @@ const PostGrid = (props) => {
     return <div>No posts found</div>;
   }
 
-  // return (
-  // 	<main className="main-grid">
-  // 		{props.posts.map((post) =>
-  // 			post.images.map((image, i) => (
-  // 				<div className="img-container" key={i}>
-  // 					<Link to={`/posts/${image.postId}`} className="post-link">
-  // 						<img src={image.url} />
-  // 					</Link>
-  // 				</div>
-  // 			))
-  // 		)}
-  // 	</main>
-  // );
-
   return (
     <main className="main-grid">
       {props.posts?.map((post) => {
         return (
           <div className="img-container" key={crypto.randomUUID()}>
+            {post.images.length > 1 ? <div className="material-symbols-outlined">library_add</div> : ""}
             <img src={`http://localhost:8080/uploads/${post.images[0]}`} />
           </div>
         );
@@ -35,3 +22,4 @@ const PostGrid = (props) => {
 };
 
 export default PostGrid;
+
