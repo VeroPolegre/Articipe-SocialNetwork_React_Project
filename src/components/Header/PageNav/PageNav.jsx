@@ -14,6 +14,16 @@ const PageNav = ({ user }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showExploreMenu, setShowExploreMenu] = useState(false);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+      setIsModalVisible(true);
+  };
+
+  const handleCancel = () => {
+      setIsModalVisible(false);
+  };
+
   useEffect(() => {
     setShowHomeMenu(location.pathname === "/");
     setShowUserMenu(location.pathname === "/profile");

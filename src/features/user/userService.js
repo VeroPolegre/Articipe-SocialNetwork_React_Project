@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/users";
-const token = JSON.parse(localStorage.getItem("token"));
-
 const getLoggedUser = async () => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.get(API_URL + "/profile", {
     headers: {
       Authorization: token,
@@ -13,6 +12,7 @@ const getLoggedUser = async () => {
 };
 
 const getUsersByName = async (name) => {
+  const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.get(API_URL + "/name/" + name, {
     headers: {
       Authorization: token,
