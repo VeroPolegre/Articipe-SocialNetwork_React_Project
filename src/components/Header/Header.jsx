@@ -6,20 +6,19 @@ import { useEffect } from "react";
 import { getLoggedUser } from "../../features/user/userSlice";
 
 const Header = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-    const { user } = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getLoggedUser());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(getLoggedUser());
-    }, [dispatch]);
-
-    return (
-        <>
-            <PageNav username={user.loggedUser} />
-            <MainNav/>
-        </>
-    )
+  return (
+    <>
+      <PageNav user={user} />
+      <MainNav />
+    </>
+  );
 };
 
 export default Header;
