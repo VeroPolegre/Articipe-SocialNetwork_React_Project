@@ -6,18 +6,11 @@
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 200,
-  'GRAD' -25,
-  'opsz' 24
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 24;
 }
 .material-symbols-filled {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 200,
-  'GRAD' -25,
-  'opsz' 24
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" -25, "opsz" 24;
+  color: red;
 }
 
 #root {

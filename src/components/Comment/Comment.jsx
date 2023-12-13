@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Comment.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteComment,
   likeComment,
+  reset,
   unlikeComment,
 } from "../../features/comments/commentsSlice";
 
@@ -14,6 +15,9 @@ const Comment = ({ comment }) => {
   const isCommentOwner = comment.userId.includes(user._id);
   const handleDelete = () => {
     dispatch(deleteComment(comment._id));
+    setTimeout(() => {
+      dispatch(reset());
+    }, 2000);
   };
 
   const handleLike = () => {
@@ -31,7 +35,9 @@ const Comment = ({ comment }) => {
       <div className="post-like-menu-comments">
         <div>
           <span
-            className={`material-symbols-outlined ${isLiked ? "liked" : ""}`}
+            className={`material-symbols-outlined ${
+              isLiked ? "material-symbols-filled" : ""
+            }`}
             onClick={handleLike}
           >
             favorite

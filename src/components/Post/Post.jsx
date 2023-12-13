@@ -10,6 +10,7 @@ const Post = (params) => {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const { user } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.comments);
   const isAlreadyLiked = params.likes.includes(user._id);
   const handleLikeClick = () => {
     if (isAlreadyLiked) {
@@ -74,6 +75,7 @@ const Post = (params) => {
               {showComments ? "Hide" : "View"} all comments
             </p>
             {showComments && <Comments postId={params.postId} />}
+            <div className="notification">{message}</div>
           </div>
         </section>
       </article>

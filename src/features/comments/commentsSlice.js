@@ -156,5 +156,6 @@ export const commentsSlice = createSlice({
       });
   },
 });
+export const { reset } = commentsSlice.actions;
 
 export default commentsSlice.reducer;
