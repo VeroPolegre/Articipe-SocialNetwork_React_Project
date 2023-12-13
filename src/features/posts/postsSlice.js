@@ -103,13 +103,7 @@ export const postsSlice = createSlice({
 			.addCase(getPosts.fulfilled, (state, action) => {
 				state.isSuccess = true;
 				state.message = action.payload.message;
-				const updatedPosts = state.posts.map((post) => {
-					if (post._id == action.payload._id) {
-						post = action.payload;
-					}
-					return post;
-				});
-				state.posts = updatedPosts;
+				state.posts = action.payload;
 			})
 			.addCase(getPosts.rejected, (state, action) => {
 				state.isError = true;
