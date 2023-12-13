@@ -8,6 +8,9 @@ import { getLoggedUser } from '../../features/user/userSlice';
 const Profile = () => {
 
     const { user } = useSelector((state) => state.user);
+
+    const loggedUserPosts = user.loggedUser.postIds
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +21,7 @@ const Profile = () => {
         <React.Fragment>
             <Header/>
             <UserDataProfile user={user.loggedUser} posts={user.numOfPosts} following={user.numOfFollowing} followers={user.numOfFollowers}/>
-            <PostGrid/>
+            <PostGrid posts={loggedUserPosts}/>
         </React.Fragment>
     );
 };
