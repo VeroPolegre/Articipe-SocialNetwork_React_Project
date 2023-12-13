@@ -6,34 +6,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLoggedUser } from "../../features/user/userSlice";
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.user);
+	const { user } = useSelector((state) => state.user);
 
-  if (!user) {
-    return "cargando....";
-  }
+	if (!user) {
+		return "Loading...";
+	}
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getLoggedUser());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(getLoggedUser());
+	}, [dispatch]);
 
-  const numOfPosts = user.postIds?.length;
-  const numOfFollowing = user.following?.length;
-  const numOfFollowers = user.followers?.length;
+	const numOfPosts = user.postIds?.length;
+	const numOfFollowing = user.following?.length;
+	const numOfFollowers = user.followers?.length;
 
-  return (
-    <React.Fragment>
-      <Header />
-      <UserDataProfile
-        user={user}
-        posts={numOfPosts}
-        following={numOfFollowing}
-        followers={numOfFollowers}
-      />
-      <PostGrid posts={user.postIds} />
-    </React.Fragment>
-  );
+	return (
+		<React.Fragment>
+			<Header />
+			<UserDataProfile
+				user={user}
+				posts={numOfPosts}
+				following={numOfFollowing}
+				followers={numOfFollowers}
+			/>
+			<PostGrid posts={user.postIds} />
+		</React.Fragment>
+	);
 };
 
 export default Profile;
