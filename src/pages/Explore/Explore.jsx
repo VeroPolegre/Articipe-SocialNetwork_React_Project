@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/header";
 import PostGrid from "../../components/PostGrid/PostGrid";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { useSelector } from "react-redux";
+import UserGrid from "../../components/UserGrid/UserGrid";
 
 const Explore = () => {
+  const [searchType, setSearchType] = useState("post");
+  const handleSearchTypeChange = (type) => {
+    setSearchType(type);
+  };
 
-	const { posts } = useSelector((state) => state.posts);
-
-	return (
-		<React.Fragment>
-			<Header />
-			<SearchBar />
-			<PostGrid posts={posts}/>
-		</React.Fragment>
-	);
+  return (
+    <React.Fragment>
+      <Header />
+      <SearchBar onSearchTypeChange={handleSearchTypeChange} />
+      <main className="explore-main">
+        {searchType === "post" && <PostGrid />}
+        {searchType === "user" && <UserGrid />}
+      </main>
+    </React.Fragment>
+  );
 };
 
 export default Explore;
