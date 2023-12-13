@@ -17,6 +17,11 @@ const getPosts = async () => {
   return res.data;
 };
 
+const getFollowersPosts = async () => {
+	const res = await axios.get(API_URL);
+	return res.data;
+  };
+
 const getPostById = async (_id) => {
   const res = await axios.get(API_URL + _id);
   return res.data;
@@ -76,6 +81,7 @@ const postsService = {
   getPostsByKeywords,
   like,
   unlike,
+  getFollowersPosts,
 };
 
 export default postsService;

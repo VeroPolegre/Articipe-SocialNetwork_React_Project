@@ -30,6 +30,14 @@ export const getPosts = createAsyncThunk("posts/getPosts", async () => {
 	}
 });
 
+export const getFollowersPosts = createAsyncThunk("posts/getFollowersPosts", async () => {
+	try {
+		return await postsService.getFollowersPosts();
+	} catch (error) {
+		console.error(error);
+	}
+});
+
 export const getPostById = createAsyncThunk(
 	"posts/getPostById",
 	async (_id) => {
@@ -106,6 +114,15 @@ export const postsSlice = createSlice({
 				state.posts = action.payload;
 			})
 			.addCase(getPosts.rejected, (state, action) => {
+				state.isError = true;
+				state.message = action.payload;
+			})
+			.addCase(getFollowersPosts.fulfilled, (state, action) => {
+				state.isSuccess = true;
+				state.message = action.payload.message;
+				state.posts = action.payload;
+			})
+			.addCase(getFollowersPosts.rejected, (state, action) => {
 				state.isError = true;
 				state.message = action.payload;
 			})
