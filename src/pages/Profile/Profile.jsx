@@ -7,10 +7,10 @@ import { getLoggedUser } from "../../features/user/userSlice";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
+
   if (!user) {
-    return "cargandol....";
+    return "cargando....";
   }
-  const loggedUserPosts = user.loggedUser?.postIds;
 
   const dispatch = useDispatch();
 
@@ -18,16 +18,20 @@ const Profile = () => {
     dispatch(getLoggedUser());
   }, [dispatch]);
 
+  const numOfPosts = user.postIds?.length;
+  const numOfFollowing = user.following?.length;
+  const numOfFollowers = user.followers?.length;
+
   return (
     <React.Fragment>
       <Header />
       <UserDataProfile
         user={user}
-        posts={user.numOfPosts}
-        following={user.numOfFollowing}
-        followers={user.numOfFollowers}
+        posts={numOfPosts}
+        following={numOfFollowing}
+        followers={numOfFollowers}
       />
-      <PostGrid posts={loggedUserPosts} />
+      <PostGrid posts={user.postIds} />
     </React.Fragment>
   );
 };

@@ -6,7 +6,7 @@ const initialState = {
   searchedUsers: [],
   isError: false,
   isSuccess: false,
-  message: "",
+  message: ""
 };
 
 export const getLoggedUser = createAsyncThunk(

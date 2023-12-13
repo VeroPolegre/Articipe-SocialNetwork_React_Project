@@ -14,6 +14,7 @@ const Posts = () => {
   }, []);
 
   const post = posts.map((post) => {
+
     return (
       <Post
         images={post.images}
@@ -22,8 +23,8 @@ const Posts = () => {
         content={post.content}
         key={post._id}
         postId={post._id}
-        username={post.userId.username}
-        avatar={post.userId.avatar}
+        username={post.userId?.username}
+        avatar={post.userId?.avatar}
         likes={post.likes}
       />
     );
