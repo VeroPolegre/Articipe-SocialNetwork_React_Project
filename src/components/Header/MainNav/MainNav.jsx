@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./MainNav.scss";
 import { useState } from "react";
 import CreatePost from "../../CreatePost/CreatePost";
@@ -18,9 +18,9 @@ const MainNav = () => {
 		<>
 			<nav className="main-nav">
 				<ul>
-					<Link to="/">
+					<NavLink to="/" exact onClick={() => window.scrollTo(0, 0)}>
 						<li className="material-symbols-outlined">home</li>
-					</Link>
+					</NavLink>
 					<Link to="/explore">
 						<li className="material-symbols-outlined">search</li>
 					</Link>
