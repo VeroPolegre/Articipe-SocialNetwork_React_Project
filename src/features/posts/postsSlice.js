@@ -92,6 +92,9 @@ export const postsSlice = createSlice({
 			state.isError = false;
 			state.isSuccess = false;
 			state.message = "";
+			state.posts = [];
+			state.post = {};
+			state.hasMorePages = true;
 		},
 	},
 	extraReducers: (builder) => {
@@ -166,4 +169,5 @@ export const postsSlice = createSlice({
 	},
 });
 
+export const { reset } = postsSlice.actions;
 export default postsSlice.reducer;
