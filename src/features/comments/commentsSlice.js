@@ -102,7 +102,6 @@ export const commentsSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(deleteComment.fulfilled, (state, action) => {
-        console.log(action.payload);
         const commentsUpdated = state.comments.comments.filter(
           (comment) => comment._id != action.payload.comment._id
         );
