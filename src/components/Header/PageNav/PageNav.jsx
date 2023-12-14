@@ -33,6 +33,11 @@ const PageNav = ({ user, onSearchTypeChange }) => {
 		onSearchTypeChange("user");
 	};
 
+    const dispatch = useDispatch();
+    const handleGroupClick = () => {
+        dispatch(getFollowingPosts());
+      };
+
 	useEffect(() => {
 		setShowHomeMenu(location.pathname === "/");
 		setShowUserMenu(location.pathname === "/profile");
@@ -56,7 +61,7 @@ const PageNav = ({ user, onSearchTypeChange }) => {
 					<span className="material-symbols-outlined right-border">
 						explore
 					</span>
-					<span className="material-symbols-outlined">group</span>
+					<span className="material-symbols-outlined" onClick={handleGroupClick}>group</span>
 				</div>
 			</header>
 		);
