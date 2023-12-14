@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./Comment.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,7 +11,7 @@ const Comment = ({ comment }) => {
   const { user } = useSelector((state) => state.auth);
   const isLiked = comment.likes.includes(user._id);
   const dispatch = useDispatch();
-  const isCommentOwner = comment.userId.includes(user._id);
+  const isCommentOwner = comment.userId._id == user._id;
   const handleDelete = () => {
     dispatch(deleteComment(comment._id));
     setTimeout(() => {
@@ -30,7 +29,7 @@ const Comment = ({ comment }) => {
 
   return (
     <div>
-      <span className="comment-username">{user.username}</span>:{" "}
+      <span className="comment-username">{comment.userId.username}</span>:{" "}
       <span className="comment-text">
         {comment.text || "No text available"}
       </span>
