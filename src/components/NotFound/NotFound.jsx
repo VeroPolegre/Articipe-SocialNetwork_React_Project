@@ -1,6 +1,4 @@
 import React from "react";
-import { Button } from "antd";
-import { Link } from "react-router-dom";
 import MainNav from "../Header/MainNav/MainNav";
 import "./NotFound.scss";
 

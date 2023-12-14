@@ -29,7 +29,7 @@ const Posts = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        overflow: "hidden", // Add this line to hide overflow
+        overflow: "hidden",
       }}
     >
       <InfiniteScroll

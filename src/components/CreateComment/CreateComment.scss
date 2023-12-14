@@ -26,7 +26,7 @@
     width: 100% !important;
 
     label {
-      font-size: 14px; /* Adjust the font size as needed */
+      font-size: 14px;
     }
   }
 
@@ -52,14 +52,14 @@
 
     button {
       width: auto !important;
-      background-color: #1890ff; /* Blue color */
-      color: #fff; /* White text color */
-      padding: 10px 20px; /* Adjust padding as needed */
+      background-color: #1890ff;
+      color: #fff;
+      padding: 10px 20px;
       border: none;
       border-radius: 5px;
 
       &:hover {
-        background-color: #096dd9; /* Darker shade on hover */
+        background-color: #096dd9;
       }
     }
   }

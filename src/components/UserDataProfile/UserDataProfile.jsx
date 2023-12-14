@@ -1,7 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./UserDataProfile.scss";
-import { getLoggedUser } from "../../features/user/userSlice";
-import { useEffect } from "react";
 
 const UserDataProfile = (userData) => {
   const avatarImg = userData.user.avatar;

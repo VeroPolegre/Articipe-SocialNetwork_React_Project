@@ -1,4 +1,3 @@
-// Paella.jsx
 import React from "react";
 import "./Paella.scss";
 import CustomPaellaImage from "../../assets/754083ee-d23c-44f6-b148-11ccde04c113.jpg";
