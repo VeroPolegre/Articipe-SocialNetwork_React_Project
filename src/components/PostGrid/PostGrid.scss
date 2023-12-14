@@ -1,25 +1,28 @@
 main.main-grid {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.75vw;
+  gap: 0.5vw;
+
+  div {
+    width: 32.5vw;
+    height: 32.5vw;
     display: flex;
-    flex-flow: row wrap;
-    padding: 0.75vw;
-    gap: 0.5vw;
+    justify-content: flex-end;
 
-    div {
-        width: 32.5vw;
-        height: 32.5vw;
-        display: flex;
-        justify-content: flex-end;
-
-        div.material-symbols-outlined {
-            position: absolute;
-            color: white;
-            padding: 0.25em;
-            text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-            font-variation-settings:
-                'FILL' 1,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
-        }
+    div.material-symbols-outlined {
+      position: absolute;
+      color: white;
+      padding: 0.25em;
+      text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+      font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
     }
+  }
+}
+
+.no-posts {
+  text-align: center;
+  padding: 2em;
+  padding-top: 8em;
+  color: rgba(195, 194, 194, 0.668);
 }
