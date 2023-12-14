@@ -58,7 +58,13 @@ const CreateComment = ({ visible, onCancel, postId }) => {
 
     if (validateForm()) {
       try {
-        await commentsService.createComment(postId, formData);
+        const form = new FormData();
+        form.append("text", formData.text);
+        formData.images.forEach((image) => {
+          form.append("images", image);
+        });
+
+        dispatch(createComment(form));
         dispatch(reset());
         onCancel();
         navigate("/");
@@ -67,6 +73,7 @@ const CreateComment = ({ visible, onCancel, postId }) => {
       }
     }
   };
+
   return (
     <Modal
       visible={visible}
