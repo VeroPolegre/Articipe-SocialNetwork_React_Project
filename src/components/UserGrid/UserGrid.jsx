@@ -1,20 +1,32 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import { List, Avatar } from "antd";
 import "./UserGrid.scss";
 
-const UserGrid = (users) => {
-	// const searchedUsers = useSelector((state) => state.user.searchedUsers);
-
-	return (
-		<div className="user-grid">
-			{users.map((user) => (
-				<div className="user-container" key={user.id}>
-					<img src={user.avatar} alt={`${user.username}'s avatar`} />
-					<p>{user.username}</p>
-				</div>
-			))}
-		</div>
-	);
+const UserGrid = ({ users }) => {
+	console.log("users:", users);
+	if (!users || users.length === 0) {
+		return <div>No users found</div>;
+	} else {
+		return (
+			<List
+				itemLayout="horizontal"
+				dataSource={users}
+				renderItem={(user) => (
+					<List.Item>
+						<List.Item.Meta
+							avatar={
+								<Avatar
+									shape="square"
+									size={64}
+									src={`http://localhost:8080/uploads/${user.avatar}`}
+								/>
+							}
+							title={user.username}
+						/>
+					</List.Item>
+				)}
+			/>
+		);
+	}
 };
 
 export default UserGrid;
