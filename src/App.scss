@@ -30,3 +30,7 @@ a {
 .hide {
   display: none;
 }
+
+input:focus {
+  outline: none;
+}

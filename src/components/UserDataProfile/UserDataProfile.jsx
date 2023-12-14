@@ -28,8 +28,8 @@ const UserDataProfile = (userData) => {
         </ul>
       </article>
       <article className="profile-buttons">
-        <button className="button-1">follow</button>
-        <button className="button-2">contact</button>
+        <button className="button-1">Edit profile</button>
+        <button className="button-2">Share profile</button>
         <button className="material-symbols-outlined button-3">
           volunteer_activism
         </button>

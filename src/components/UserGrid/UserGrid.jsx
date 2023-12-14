@@ -31,6 +31,7 @@ const UserGrid = ({ users }) => {
 		return <div>No users found</div>;
 	} else {
 		return (
+			<div className="user-grid">
 			<List
 				itemLayout="horizontal"
 				dataSource={users}
@@ -54,6 +55,7 @@ const UserGrid = ({ users }) => {
 					</List.Item>
 				)}
 			/>
+			</div>
 		);
 	}
 };
