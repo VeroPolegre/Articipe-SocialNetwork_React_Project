@@ -16,9 +16,7 @@ export const createComment = createAsyncThunk(
       return await commentsService.createComment(commentData);
     } catch (error) {
       console.error(error);
-      const message = error.response.data.message;
-      console.log(message);
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue("Error creating comment");
     }
   }
 );

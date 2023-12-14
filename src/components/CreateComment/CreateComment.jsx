@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./CreateComment.scss";
 import { useDispatch } from "react-redux";
 import { createComment, reset } from "../../features/comments/commentsSlice";
-import commentsService from "../../features/comments/commentsService";
 import { InboxOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { Upload, Modal } from "antd";
@@ -64,7 +63,7 @@ const CreateComment = ({ visible, onCancel, postId }) => {
           form.append("images", image);
         });
 
-        dispatch(createComment(form));
+        dispatch(createComment({ postId, form }));
         dispatch(reset());
         onCancel();
         navigate("/");

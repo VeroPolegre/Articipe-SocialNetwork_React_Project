@@ -94,6 +94,7 @@ const Post = (params) => {
 
       {showCreateComment && (
         <CreateComment
+          postId={params.postId}
           visible={showCreateComment}
           onCancel={toggleCreateComment}
         />
