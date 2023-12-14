@@ -1,0 +1,76 @@
+.create-comment-modal {
+  padding: 15px 20px;
+
+  form {
+    padding: 1em;
+  }
+
+  .ant-modal-header {
+    text-align: center;
+  }
+
+  .ant-modal-body {
+    display: block;
+    width: 100%;
+  }
+
+  .image-upload-column {
+    width: 100%;
+  }
+
+  .details-column {
+    width: 100%;
+  }
+
+  .custom-label-input {
+    width: 100% !important;
+
+    label {
+      font-size: 14px; /* Adjust the font size as needed */
+    }
+  }
+
+  .image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+
+    .image-preview-item {
+      margin-right: 8px;
+      margin-bottom: 8px;
+
+      img {
+        max-width: 30vw;
+        max-height: auto;
+      }
+    }
+  }
+
+  .create-comment-actions {
+    text-align: center;
+    margin-top: 16px;
+
+    button {
+      width: auto !important;
+      background-color: #1890ff; /* Blue color */
+      color: #fff; /* White text color */
+      padding: 10px 20px; /* Adjust padding as needed */
+      border: none;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #096dd9; /* Darker shade on hover */
+      }
+    }
+  }
+
+  textarea,
+  select {
+    width: 100%;
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 0.7em;
+  }
+}

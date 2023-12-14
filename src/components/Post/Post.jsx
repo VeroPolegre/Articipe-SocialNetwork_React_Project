@@ -3,15 +3,18 @@ import "./Post.scss";
 import { Carousel } from "antd";
 import { getComments } from "../../features/comments/commentsSlice";
 import Comments from "../Comments/Comments";
+import CreateComment from "../CreateComment/CreateComment";
 import { useDispatch, useSelector } from "react-redux";
 import { like, unlike } from "../../features/posts/postsSlice";
 
 const Post = (params) => {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
+  const [showCreateComment, setShowCreateComment] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.comments);
   const isAlreadyLiked = params.likes.includes(user._id);
+
   const handleLikeClick = () => {
     if (isAlreadyLiked) {
       dispatch(unlike(params.postId));
@@ -33,6 +36,10 @@ const Post = (params) => {
     if (!showComments) {
       dispatch(getComments(params.postId));
     }
+  };
+
+  const toggleCreateComment = () => {
+    setShowCreateComment(!showCreateComment);
   };
 
   return (
@@ -64,7 +71,12 @@ const Post = (params) => {
               >
                 {isAlreadyLiked ? "favorite" : "favorite_border"}
               </span>
-              <span className="material-symbols-outlined">add_comment</span>
+              <span
+                className="material-symbols-outlined"
+                onClick={toggleCreateComment}
+              >
+                add_comment
+              </span>
             </div>
             <span className="material-symbols-outlined">bookmark</span>
           </div>
@@ -79,6 +91,13 @@ const Post = (params) => {
           </div>
         </section>
       </article>
+
+      {showCreateComment && (
+        <CreateComment
+          visible={showCreateComment}
+          onCancel={toggleCreateComment}
+        />
+      )}
     </>
   );
 };
