@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/comments/";
 
 const createComment = async (formData) => {
-  console.log(formData);
   const token = JSON.parse(localStorage.getItem("token"));
   const res = await axios.post(API_URL + formData.postId, formData.form, {
     headers: {
