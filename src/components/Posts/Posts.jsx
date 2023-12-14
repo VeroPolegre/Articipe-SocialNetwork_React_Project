@@ -12,18 +12,13 @@ const Posts = () => {
 
 	useEffect(() => {
 		dispatch(getPosts({ page, limit }));
-		console.log("Fetching posts for page: 1");
 	}, [dispatch]);
 
 	const loadMore = () => {
 		if (hasMorePages) {
 			dispatch(getPosts({ page: Math.ceil(posts.length / limit) + 1, limit }));
-			console.log("Fetching more posts...");
 		}
 	};
-
-	console.log("Posts:", posts);
-	console.log("hasMorePages:", hasMorePages);
 
 	return (
 		<div>

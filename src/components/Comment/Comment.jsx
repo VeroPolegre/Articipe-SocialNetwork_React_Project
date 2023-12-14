@@ -30,7 +30,10 @@ const Comment = ({ comment }) => {
 
   return (
     <div>
-      <p>{comment.text || "No text available"}</p>
+      <span className="comment-username">{user.username}</span>:{" "}
+      <span className="comment-text">
+        {comment.text || "No text available"}
+      </span>
       {comment.image && <img src={comment.image} alt="comment" />}
       <div className="post-like-menu-comments">
         <div>
@@ -42,6 +45,7 @@ const Comment = ({ comment }) => {
           >
             favorite
           </span>
+          <span className="like-count">{comment.likes.length}</span>
           {isCommentOwner && (
             <span className="material-symbols-outlined" onClick={handleDelete}>
               delete

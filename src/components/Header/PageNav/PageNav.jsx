@@ -17,11 +17,11 @@ const PageNav = ({ user }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
-      setIsModalVisible(true);
+    setIsModalVisible(true);
   };
 
   const handleCancel = () => {
-      setIsModalVisible(false);
+    setIsModalVisible(false);
   };
 
   useEffect(() => {
@@ -38,10 +38,10 @@ const PageNav = ({ user }) => {
         </section>
         <section>
           <span className="material-symbols-outlined">favorite</span>
-                    <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
-                    <Link to="#" onClick={showModal}>
-              <span className="material-symbols-outlined">menu</span>
-                    </Link>
+          <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
+          <Link to="#" onClick={showModal}>
+            <span className="material-symbols-outlined">menu</span>
+          </Link>
         </section>
         <div>
           <span className="material-symbols-outlined right-border">
@@ -58,7 +58,10 @@ const PageNav = ({ user }) => {
           <h4>{user.username}</h4>
         </section>
         <section>
-          <span className="material-symbols-outlined">menu</span>
+          <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
+          <Link to="#" onClick={showModal}>
+            <span className="material-symbols-outlined">menu</span>
+          </Link>
         </section>
       </header>
     );
@@ -70,8 +73,10 @@ const PageNav = ({ user }) => {
         </section>
         <section>
           <span className="material-symbols-outlined">favorite</span>
-          <span className="material-symbols-outlined">menu</span>
-        </section>
+          <ConfigNav visible={isModalVisible} onCancel={handleCancel} />
+          <Link to="#" onClick={showModal}>
+            <span className="material-symbols-outlined">menu</span>
+          </Link>        </section>
         <div>
           <span className="material-symbols-outlined right-border">
             grid_on
