@@ -46,6 +46,7 @@ const SearchBar = ({ onSearchTypeChange, searchType }) => {
 						placeholder="Search"
 						id="searchInput"
 						className="text-input"
+						autoComplete="off"
 					/>
 				</div>
 			</form>
