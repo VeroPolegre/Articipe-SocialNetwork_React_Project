@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/users";
+const API_URL =
+  "https://socialnetwork-backend-project-dev-qxbk.4.us-1.fl0.io/users";
 
 const register = async (userData) => {
   const res = await axios.post(API_URL + "/register", userData);

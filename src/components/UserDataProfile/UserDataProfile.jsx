@@ -1,4 +1,5 @@
 import "./UserDataProfile.scss";
+const API_URL = "https://socialnetwork-backend-project-dev-qxbk.4.us-1.fl0.io";
 
 const UserDataProfile = (userData) => {
   const avatarImg = userData.user.avatar;
@@ -7,7 +8,7 @@ const UserDataProfile = (userData) => {
     <section className="user-data-main">
       <article className="profile-metrics">
         <div className="img-container">
-          <img src={`http://localhost:8080/uploads/${avatarImg}`} alt="" />
+          <img src={`${API_URL}/uploads/${avatarImg}`} alt="" />
         </div>
         <ul>
           <li>

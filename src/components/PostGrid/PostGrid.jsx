@@ -1,4 +1,5 @@
 import "./PostGrid.scss";
+const API_URL = "https://socialnetwork-backend-project-dev-qxbk.4.us-1.fl0.io";
 
 const PostGrid = (props) => {
   if (!props.posts || props.posts.length === 0) {
@@ -20,7 +21,7 @@ const PostGrid = (props) => {
             ) : (
               ""
             )}
-            <img src={`http://localhost:8080/uploads/${post.images[0]}`} />
+            <img src={`${API_URL}/uploads/${post.images[0]}`} />
           </div>
         );
       })}
