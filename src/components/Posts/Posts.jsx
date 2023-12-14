@@ -27,7 +27,7 @@ const Posts = () => {
 				next={loadMore}
 				hasMore={hasMorePages}
 				loader={<h4>Loading...</h4>}
-				endMessage={<div>It is all, nothing more 🤐</div>}>
+				endMessage={<div>No more posts</div>}>
 				{posts.map((post) => (
 					<Post
 						images={post.images}
