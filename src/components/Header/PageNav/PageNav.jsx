@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ConfigNav from "../ConfigNav/ConfigNav";
 import { Link } from "react-router-dom";
+import { getFollowingPosts } from "../../../features/posts/postsSlice";
 
 const PageNav = ({ user }) => {
+    
   if (!user) {
     return "cargando..";
   }
@@ -30,6 +32,11 @@ const PageNav = ({ user }) => {
     setShowExploreMenu(location.pathname === "/explore");
   }, [location]);
 
+  const dispatch = useDispatch();
+    const handleGroupClick = () => {
+        dispatch(getFollowingPosts());
+      };
+
   if (showHomeMenu) {
     return (
       <header>
@@ -47,7 +54,7 @@ const PageNav = ({ user }) => {
           <span className="material-symbols-outlined right-border">
             explore
           </span>
-          <span className="material-symbols-outlined">group</span>
+          <span className="material-symbols-outlined" onClick={handleGroupClick}>group</span>
         </div>
       </header>
     );
