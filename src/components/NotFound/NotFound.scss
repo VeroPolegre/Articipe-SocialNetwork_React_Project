@@ -1,0 +1,16 @@
+div.page-error {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 8em;
+    div.img-container {
+        border-radius: 5em;
+        width: 20em;
+        height: 20em;
+    }
+    h3 {
+        margin-top: 1.5em;
+    }
+}
