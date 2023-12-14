@@ -1,6 +1,7 @@
 import "./PostGrid.scss";
 
 const PostGrid = (props) => {
+	console.log("Posts:", props.posts);
 	if (!props.posts || props.posts.length === 0) {
 		return <div>No posts found</div>;
 	}

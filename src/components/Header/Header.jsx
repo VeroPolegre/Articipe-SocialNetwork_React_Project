@@ -5,20 +5,24 @@ import PageNav from "./PageNav/PageNav";
 import { useEffect } from "react";
 import { getLoggedUser } from "../../features/user/userSlice";
 
-const Header = () => {
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+const Header = ({ onSearchTypeChange, searchType }) => {
+	const { user } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getLoggedUser());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(getLoggedUser());
+	}, [dispatch]);
 
-  return (
-    <>
-      <PageNav user={user} />
-      <MainNav />
-    </>
-  );
+	return (
+		<>
+			<PageNav
+				user={user}
+				onSearchTypeChange={onSearchTypeChange}
+				searchType={searchType}
+			/>
+			<MainNav />
+		</>
+	);
 };
 
 export default Header;
