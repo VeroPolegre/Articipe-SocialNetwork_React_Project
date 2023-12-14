@@ -103,15 +103,16 @@ export const postsSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.message = "";
-			state.posts = [];
-			state.post = {};
-			state.hasMorePages = true;
+      state.posts = [];
+      state.post = {};
+      state.hasMorePages = true;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(create.fulfilled, (state, action) => {
         state.post = action.payload;
+        state.posts = [action.payload, ...state.posts];
         state.isSuccess = true;
         state.message = action.payload.message;
       })
@@ -165,7 +166,8 @@ export const postsSlice = createSlice({
       .addCase(like.fulfilled, (state, action) => {
         const posts = state.posts.map((post) => {
           if (post._id === action.payload._id) {
-            return action.payload;
+            post = { ...action.payload, userId: post.userId };
+            return post;
           }
           return post;
         });
@@ -174,7 +176,8 @@ export const postsSlice = createSlice({
       .addCase(unlike.fulfilled, (state, action) => {
         const updatedPosts = state.posts.map((post) => {
           if (post._id === action.payload._id) {
-            return action.payload;
+            post = { ...action.payload, userId: post.userId };
+            return post;
           }
           return post;
         });

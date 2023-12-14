@@ -118,7 +118,10 @@ export const commentsSlice = createSlice({
         state.comment = action.payload;
         const commentsUpdated = state.comments.comments.map((comment) => {
           if (comment._id == action.payload._id) {
-            comment = action.payload;
+            comment = {
+              ...action.payload,
+              userId: comment.userId,
+            };
           }
           return comment;
         });
@@ -136,7 +139,10 @@ export const commentsSlice = createSlice({
         state.comment = action.payload;
         const commentsUpdated = state.comments.comments.map((comment) => {
           if (comment._id == action.payload._id) {
-            return action.payload;
+            comment = {
+              ...action.payload,
+              userId: comment.userId,
+            };
           }
           return comment;
         });
