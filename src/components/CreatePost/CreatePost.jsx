@@ -1,7 +1,7 @@
 import "./CreatePost.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { create, reset } from "../../features/posts/postsSlice";
+import { create } from "../../features/posts/postsSlice";
 import { Modal, Upload } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
