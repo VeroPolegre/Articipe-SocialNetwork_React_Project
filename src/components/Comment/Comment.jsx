@@ -46,7 +46,10 @@ const Comment = ({ comment }) => {
           </span>
           <span className="like-count">{comment.likes.length}</span>
           {isCommentOwner && (
-            <span className="material-symbols-outlined" onClick={handleDelete}>
+            <span
+              className="material-symbols-outlined trash-symbol"
+              onClick={handleDelete}
+            >
               delete
             </span>
           )}

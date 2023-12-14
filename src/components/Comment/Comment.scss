@@ -32,9 +32,14 @@ div {
       font-size: 14px !important;
       color: darkgrey;
       align-items: center !important;
-      left: -10%;
+      margin-top: 1px;
+      left: -6px;
       transform: translateX(-40%);
     }
+  }
+
+  .trash-symbol {
+    margin-left: -4px;
   }
 
   @keyframes fillRed {
