@@ -18,7 +18,7 @@ const MainNav = () => {
 		<>
 			<nav className="main-nav">
 				<ul>
-					<NavLink to="/" exact onClick={() => window.scrollTo(0, 0)}>
+					<NavLink to="/" exact="true" onClick={() => window.scrollTo(0, 0)}>
 						<li className="material-symbols-outlined">home</li>
 					</NavLink>
 					<Link to="/explore">
