@@ -28,7 +28,7 @@ const UserGrid = ({ users }) => {
 	};
 
 	if (!users || users.length === 0) {
-		return <div>No users found</div>;
+		return <h4 className="no-posts">No users found</h4>;
 	} else {
 		return (
 			<div className="user-grid">
