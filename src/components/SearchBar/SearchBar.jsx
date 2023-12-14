@@ -17,17 +17,17 @@ const SearchBar = ({ onSearchTypeChange, searchType }) => {
 		const keywordsArray = keywords.split(", ").map((keyword) => keyword.trim());
 
 		if (onSearchTypeChange) {
-			onSearchTypeChange(keywordsArray);
+			onSearchTypeChange(searchType, keywordsArray);
+		}
+
+		if (searchType === "post") {
+			dispatch(getPostsByKeywords(keywordsArray));
+		} else if (searchType === "user") {
+			dispatch(getUsersByName(keywordsArray));
 		}
 
 		setKeywords("");
 	};
-
-	if (searchType === "post") {
-		dispatch(getPostsByKeywords(keywordsArray));
-	} else if (searchType === "user") {
-		dispatch(getUsersByName(keywordsArray));
-	}
 
 	return (
 		<>

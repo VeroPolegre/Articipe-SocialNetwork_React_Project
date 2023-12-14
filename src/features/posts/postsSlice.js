@@ -137,10 +137,12 @@ export const postsSlice = createSlice({
 				state.message = action.payload;
 			})
 			.addCase(getPostsByKeywords.fulfilled, (state, action) => {
-				const posts = action.payload.map((post) => ({
-					images: post.images,
-				}));
-				state.posts = posts.flat();
+				console.log(action.payload);
+				// const posts = action.payload.map((post) => ({
+				// 	images: post.images,
+				// }));
+				// console.log(posts.flat());
+				state.posts = action.payload;
 				state.isSuccess = true;
 				state.message = action.payload.message;
 			})
