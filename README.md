@@ -1,5 +1,5 @@
 # Articipe - Your Artistic Social Network 🎨
-![WhatsApp Image 2023-12-15 at 00 55 06_0ffd9b01](https://github.com/VeroPolegre/Articipe-SocialNetwork_React_Project/assets/69759992/cf51f5fc-0481-462c-99b3-164cce4c581e)
+![WhatsApp Image 2023-12-15 at 01 16 34_448d3cb7](https://github.com/VeroPolegre/Articipe-SocialNetwork_React_Project/assets/69759992/7c6064eb-2bfb-42e9-b8c3-76e0c6f4259d)
 
 ## Table of Contents
 
@@ -79,6 +79,38 @@ To run Articipe locally, follow these steps:
 - **Luciana Boasso:** https://github.com/Luboasso
 
 ### Contributing
+Contributions are welcomed and appreciated! Your input helps us create a better community and enhance the Articipe project.
+
+If you have suggestions, bug fixes, or new features to propose, here's how you can contribute:
+
+1. Fork the Repository
+Click the "Fork" button on the top right of the repository's page to create your copy.
+
+2. Create a Feature Branch
+ ```bash
+   git checkout -b feature/YourName
+   ```
+Create a branch with a descriptive name for your contribution.
+
+3. Commit Your Changes
+ ```bash
+   git commit -m 'Add some YourName'
+   ```
+Make your changes and commit them with a clear and concise message.
+
+4. Push to the Branch
+
+ ```bash
+  git push origin feature/YourName
+   ```
+Push your changes to your branch on your forked repository.
+
+5. Open a Pull Request
+Go to the original repository and click on "New Pull Request". Describe your changes and submit the pull request.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. Please tag it as "enhancement". Don't forget to give the project a star if you found it helpful! Your support means a lot.
+
+Thank you for contributing to Articipe!
 
 ### License
 
