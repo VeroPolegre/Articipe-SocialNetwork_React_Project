@@ -6,6 +6,7 @@ import Comments from "../Comments/Comments";
 import CreateComment from "../CreateComment/CreateComment";
 import { useDispatch, useSelector } from "react-redux";
 import { like, unlike } from "../../features/posts/postsSlice";
+const API_URL = "https://socialnetwork-backend-project-dev-qxbk.4.us-1.fl0.io";
 
 const Post = (params) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Post = (params) => {
   const postImg = params.images.map((img) => {
     return (
       <div className="img-container" key={crypto.randomUUID()}>
-        <img src={`http://localhost:8080/uploads/${img}`} alt="" />
+        <img src={`${API_URL}/uploads/${img}`} alt="" />
       </div>
     );
   });
@@ -48,10 +49,7 @@ const Post = (params) => {
         <section className="post-main">
           <div className="post-user-details">
             <div className="img-container profile-pic-post">
-              <img
-                src={`http://localhost:8080/uploads/${params.avatar}`}
-                alt=""
-              />
+              <img src={`${API_URL}/uploads/${params.avatar}`} alt="" />
             </div>
             <div>
               <p className="semi-bold">{params.username}</p>

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/comments/";
+const API_URL =
+  "https://socialnetwork-backend-project-dev-qxbk.4.us-1.fl0.io/comments/";
 
 const createComment = async (formData) => {
   const token = JSON.parse(localStorage.getItem("token"));
