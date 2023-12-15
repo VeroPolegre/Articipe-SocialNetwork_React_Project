@@ -1,4 +1,6 @@
 # Articipe - Your Artistic Social Network 🎨
+![WhatsApp Image 2023-12-15 at 00 55 06_0ffd9b01](https://github.com/VeroPolegre/Articipe-SocialNetwork_React_Project/assets/69759992/cf51f5fc-0481-462c-99b3-164cce4c581e)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -17,6 +19,10 @@ Articipe is an art-centric social network that provides a platform for artists a
 
 ### Preview
  
+
+https://github.com/VeroPolegre/Articipe-SocialNetwork_React_Project/assets/69759992/e107c50a-00c4-4e6e-9c22-5a127b401b36
+
+
 ### Features
 
 - **User Registration and Authentication:** Users can create accounts and securely log in.
