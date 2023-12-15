@@ -1,4 +1,4 @@
-# Articipe - Your Artistic Social Network 🎨
+# Articipe - The Creative Social Network 🎨
 ![WhatsApp Image 2023-12-15 at 01 16 34_448d3cb7](https://github.com/VeroPolegre/Articipe-SocialNetwork_React_Project/assets/69759992/7c6064eb-2bfb-42e9-b8c3-76e0c6f4259d)
 
 ## Table of Contents
